@@ -1,0 +1,34 @@
+.Container {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.selected {
+  background: linear-gradient(transparent, rgb(24, 136, 136));
+}
+
+.Title {
+  color: white;
+  font-weight: 600;
+}
+
+.DropdownItems {
+  position: absolute;
+  list-style: none;
+  padding: 0.5em 1em 0.5em 0.5em;
+  margin: 0.5em 0;
+  background-color: rgb(19, 94, 94);
+  border: 1px solid rgb(147, 214, 214);
+  border-radius: 0.2rem;
+
+  li + li {
+    margin-top: 0.2em;
+  }
+}
+
+.Arrow {
+  margin-left: 0.5em;
+  height: 1rem;
+}

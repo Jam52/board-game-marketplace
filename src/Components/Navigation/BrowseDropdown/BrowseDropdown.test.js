@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import EnhancedBrowseDropdown, { BrowseDropdown } from './BrowseDropdown';
 import NavItem from '../NavItem/NavItem';
 
+import { config } from 'react-transition-group';
+config.disabled = true;
+
 const setup = () => {
   return mount(
     <BrowserRouter>
@@ -41,12 +44,14 @@ describe('BrowesDropdown', () => {
     test('removes list when BrowesDropdown is clicked', () => {
       const dropdown = findByTestAttr(wrapper, 'browse-dropdown');
       dropdown.simulate('click');
+
       expect(wrapper.find(NavItem).length).toBe(0);
     });
 
     test('removes list when list item is clicked', () => {
       const listItem = wrapper.find(NavItem).at(0);
       listItem.simulate('click');
+
       expect(wrapper.find(NavItem).length).toBe(0);
     });
   });
