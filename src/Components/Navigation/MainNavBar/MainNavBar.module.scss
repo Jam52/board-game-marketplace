@@ -1,0 +1,11 @@
+@import '../../../base.scss';
+
+.NavBar {
+  display: none;
+}
+
+@media (min-width: $media_computer_small) {
+  .NavBar {
+    display: block;
+  }
+}
