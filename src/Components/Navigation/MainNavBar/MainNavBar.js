@@ -8,12 +8,11 @@ class MainNavBar extends Component {
     return (
       <div data-test="component-main-nav" className={classes.NavBar}>
         <div className={classes.Container}>
-          <img
-            data-test="logo-main"
-            className={classes.Logo}
-            src={diceLogo}
-            alt=""
-          />
+          <div className={classes.Logo}>
+            <img data-test="logo-main" src={diceLogo} alt="" />
+            <h1>Boardgame Marketplace</h1>
+          </div>
+
           <div className={classes.Navigation}>
             <BrowseDropdown />
           </div>

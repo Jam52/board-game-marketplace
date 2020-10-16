@@ -38,11 +38,12 @@ export class BrowseDropdown extends Component {
 
         <CSSTransition
           in={this.state.dropDownIsVisible}
-          timeout={400}
+          timeout={{ enter: 300, exit: 500 }}
           classNames="transition"
+          className={classes.DropdownItems}
           unmountOnExit
         >
-          <ul className={classes.DropdownItems}>
+          <ul>
             {browesCategories.map((category, index) => {
               return (
                 <li key={index}>

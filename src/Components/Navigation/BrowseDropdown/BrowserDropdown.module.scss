@@ -2,16 +2,17 @@
   position: relative;
   display: flex;
   cursor: pointer;
-  padding: 0.5rem;
 }
 
 .selected {
-  background: linear-gradient(transparent, rgb(24, 136, 136));
+  .Title {
+    font-weight: 600;
+  }
 }
 
 .Title {
   color: white;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .DropdownItems {

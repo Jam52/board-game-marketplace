@@ -23,6 +23,15 @@
 
   .Logo {
     height: 90%;
+    display: flex;
+    align-items: center;
+    h1 {
+      color: white;
+      padding-left: 1rem;
+    }
+    img {
+      height: 100%;
+    }
   }
 
   .Navigation {
