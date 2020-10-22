@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './GameCard.module.scss';
 import fullstarIcon from '../../../images/star.png';
 import halfStarIcon from '../../../images/halfstar.png';
+import playerCountIcon from '../../../images/playercount.png';
+import playTimeIcon from '../../../images/time.png';
 
 const GameCard = (props) => {
   const roundedRaiting = Math.round(props.game.average_user_rating * 2) / 2;
@@ -41,11 +43,21 @@ const GameCard = (props) => {
       <div className={classes.Img}>
         <img src={props.game.images.small} atl={props.game.name} />
       </div>
+      <div className={classes.Info}>
+        <div><img src={playerCountIcon} alt='player count'></img> <p className={classes.PlayerCount} data-test="player-count">
+        {props.game.min_players} - {props.game.max_players}
+      </p></div>
+      <div>
+        <img src={playTimeIcon}/>
+        <p data-test="play-time">{props.game.min_playtime} - {props.game.max_playtime}</p>
+      </div>
 
-      <p className={classes.PlayerCount}>
-        Player Count: {props.game.min_players} - {props.game.max_players}
-      </p>
-      <div className={classes.RatingContainer}>{raiting}</div>
+      </div>
+     
+      <div className={classes.RatingContainer}>
+        <p>{props.game.average_user_rating.toFixed(1)}</p>
+        <div>{raiting}</div>
+      </div>
     </div>
   );
 };

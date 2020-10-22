@@ -23,4 +23,10 @@ describe('GameCard', () => {
     expect(findByTestAttr(wrapper, 'full-star').length).toBe(4);
     expect(findByTestAttr(wrapper, 'half-star').length).toBe(1);
   });
+  test('shows correct number of players', () => {
+    expect(findByTestAttr(wrapper, 'player-count').at(0).text()).toBe('1 - 4')
+  })
+  test('shows correct play time', () => {
+    expect(findByTestAttr(wrapper, 'play-time').at(0).text()).toBe('30 - 120')
+  })
 });
