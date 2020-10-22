@@ -43,13 +43,13 @@ const GameCard = (props) => {
       <div className={classes.Img}>
         <img src={props.game.images.small} atl={props.game.name} />
       </div>
-      <div className={classes.Info}>
+      <div className={classes.InfoContainer}>
         <div><img src={playerCountIcon} alt='player count'></img> <p className={classes.PlayerCount} data-test="player-count">
-        {props.game.min_players} - {props.game.max_players}
+        {props.game.min_players}-{props.game.max_players}
       </p></div>
       <div>
-        <img src={playTimeIcon}/>
-        <p data-test="play-time">{props.game.min_playtime} - {props.game.max_playtime}</p>
+        <img src={playTimeIcon} alt="play time"/>
+        <p data-test="play-time">{props.game.min_playtime}-{props.game.max_playtime} mins</p>
       </div>
 
       </div>
