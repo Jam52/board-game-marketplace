@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import MainNavBar from './Components/Navigation/MainNavBar/MainNavBar';
+import GameCardList from './Components/GameCardList/GameCardList';
 import { BrowserRouter } from 'react-router-dom';
+import mockData from './Components/GameCardList/__tests__/mockData.json';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <MainNavBar />
+        <GameCardList games={mockData.games} />
       </div>
     </BrowserRouter>
   );
