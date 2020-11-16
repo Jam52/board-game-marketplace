@@ -1,0 +1,26 @@
+// @import './base.scss';
+@import './CSS/main.scss';
+
+.App {
+  width: 95vw;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+.dropdown {
+  padding: 1em 2em 1em 1em;
+  margin: 2rem 0 2rem 30%;
+  width: 40%;
+  background-color: $color_orange;
+  font-family: $font_title;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: $media_tablet) {
+  .App {
+    width: 80vw;
+    max-width: 1200px;
+  }
+}
