@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import '../../../CSS/base.scss';
 
 p {
   margin: 0;
 }
 
-.Container {
+.gamecard {
   width: 100%;
   border-radius: 0.5rem;
   display: flex;
@@ -18,25 +18,25 @@ p {
 
   &:hover {
     box-shadow: 8px 10px 8px #777;
-    .Title {
+    .gamecard_title {
       transition: all 300ms;
       background-color: #222;
     }
-    .RatingContainer {
+    .gamecard_raiting {
       transition: all 300ms;
-      background-color: #e58e26;
+      background-color: $color_orange;
     }
-    .Img {
+    .gamecard_img {
       img {
         transition: height 300ms;
-        height: 100%;
+        height: 95%;
       }
     }
   }
 }
 
-.Title {
-  margin-top: 1rem;
+.gamecard_title {
+  margin: 0.8rem 0;
   width: 90%;
   border-radius: 0 0.5rem 0.5rem 0;
   background-color: #2f3640;
@@ -44,25 +44,17 @@ p {
   display: flex;
   align-self: flex-start;
   align-items: center;
-
-  h3 {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    margin-top: 0;
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1rem;
-    color: #fff;
-    padding: 0.5rem 0;
-  }
+  width: 80%;
+  font-size: 0.9rem;
+  color: #fff;
+  padding: 0.5rem 0.5rem;
 }
 
-.InfoContainer {
+.gamecard_information {
   margin: 0.5rem 0;
   width: 90%;
   align-self: flex-end;
   display: flex;
-  color: #666;
   div {
     display: flex;
     align-items: center;
@@ -76,8 +68,8 @@ p {
   }
 }
 
-.Img {
-  padding: 1rem 0;
+.gamecard_img {
+  padding: 0.2rem 0;
   width: 100%;
   height: 10rem;
   display: flex;
@@ -85,14 +77,14 @@ p {
   align-items: center;
 
   img {
-    height: 90%;
+    height: 85%;
     max-width: 100%;
   }
 }
 
-.RatingContainer {
+.gamecard_raiting {
   border-radius: 0.5rem 0 0 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   width: 90%;
   align-self: flex-end;
   display: flex;
@@ -102,10 +94,8 @@ p {
   padding: 1rem 0;
   background: #718093;
   p {
-    padding: 0;
     margin: 0 1rem;
     color: white;
-    font-size: 1.2rem;
   }
   img {
     width: 1.5rem;

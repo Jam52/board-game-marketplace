@@ -35,26 +35,28 @@ const GameCard = (props) => {
   });
 
   return (
-    <div data-test="component-game-card" className={classes.Container}>
-      <div className={classes.Title}>
-        <h3 className={classes.Title}>{props.game.name}</h3>
-      </div>
+    <div data-test="component-game-card" className={classes.gamecard}>
+      <h3 className={classes.gamecard_title}>{props.game.name}</h3>
 
-      <div className={classes.Img}>
+      <div className={classes.gamecard_img}>
         <img src={props.game.images.small} atl={props.game.name} />
       </div>
-      <div className={classes.InfoContainer}>
-        <div><img src={playerCountIcon} alt='player count'></img> <p className={classes.PlayerCount} data-test="player-count">
-        {props.game.min_players}-{props.game.max_players}
-      </p></div>
-      <div>
-        <img src={playTimeIcon} alt="play time"/>
-        <p data-test="play-time">{props.game.min_playtime}-{props.game.max_playtime} mins</p>
+      <div className={classes.gamecard_information}>
+        <div>
+          <img src={playerCountIcon} alt="player count"></img>{' '}
+          <p data-test="player-count">
+            {props.game.min_players}-{props.game.max_players}
+          </p>
+        </div>
+        <div>
+          <img src={playTimeIcon} alt="play time" />
+          <p data-test="play-time">
+            {props.game.min_playtime}-{props.game.max_playtime} mins
+          </p>
+        </div>
       </div>
 
-      </div>
-     
-      <div className={classes.RatingContainer}>
+      <div className={classes.gamecard_raiting}>
         <p>{props.game.average_user_rating.toFixed(1)}</p>
         <div>{raiting}</div>
       </div>

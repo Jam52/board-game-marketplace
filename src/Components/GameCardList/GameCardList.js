@@ -11,7 +11,7 @@ const GameCardList = (props) => {
   }
 
   return (
-    <div data-test="component-game-card-list" className={classes.Container}>
+    <div data-test="component-game-card-list" className={classes.container}>
       {gameList}
     </div>
   );

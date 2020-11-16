@@ -1,8 +1,7 @@
-@import './base.scss';
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+// @import './base.scss';
+@import './CSS/main.scss';
 
 .App {
-  font-family: 'Roboto', sans-serif;
   width: 95vw;
   margin: auto;
   padding: 1rem 0;
@@ -12,7 +11,7 @@
   padding: 1em 2em 1em 1em;
   margin: 2rem 0 2rem 30%;
   width: 40%;
-  background-color: $colour_secondary;
+  background-color: $color_orange;
   font-family: $font_title;
   color: #fff;
   border: none;
