@@ -39,7 +39,7 @@ class App extends Component {
     }
 
     let gameCards = null;
-    if (this.state.loading === true) {
+    if (this.state.loading) {
       gameCards = <Spinner />;
     } else if (this.state.games.length > 0) {
       gameCards = <GameCardList games={this.state.games} />;
