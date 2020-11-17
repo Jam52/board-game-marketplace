@@ -2,9 +2,13 @@
 
 .searchBar {
   padding: 0.5em 2em;
-  border: 2px solid green;
+  width: 100%;
+  border-radius: 0.2rem;
+  border: 1px solid $color-dark-grey;
+  background-color: #eee;
 }
 
 .inputerror {
   border: 2px solid red;
+  background-color: rgba(218, 87, 87, 0.514);
 }

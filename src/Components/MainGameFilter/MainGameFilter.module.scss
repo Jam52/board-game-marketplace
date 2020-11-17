@@ -1,0 +1,83 @@
+@import '../../CSS//base.scss';
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+label {
+  color: $color_orange;
+  font-family: $font_title;
+}
+
+.mainSearch {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  &_section {
+    width: 100%;
+  }
+
+  &_dropdown {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: 0.2rem;
+    border: 1px solid $color-dark-grey;
+    background-color: #eee;
+  }
+}
+
+.subSearch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  column-gap: 0.5rem;
+  &_section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  &_label {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  &_dropdown,
+  &_input {
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+    border-radius: 0.2rem;
+    border: 1px solid $color-dark-grey;
+    background-color: #fefefe;
+  }
+}
+
+@media (min-width: $media-tablet) {
+  .mainSearch {
+    flex-direction: row;
+
+    &_section {
+      margin: 0 0.5rem 0 0;
+    }
+
+    &_section + &_section {
+      margin: 0 0 0 0.5rem;
+    }
+  }
+}
+
+@media (min-width: $media-computer-small) {
+  .mainSearch {
+    &_inputs {
+      display: flex;
+    }
+    &_dropdown {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+}
