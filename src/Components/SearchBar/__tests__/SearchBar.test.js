@@ -39,9 +39,20 @@ describe('SearchBar', () => {
     setup();
     expect(screen.getByTestId('mechanic-search')).toBeInTheDocument();
   });
+
+  test('input incorrect value does not call submit function', () => {
+    setup();
+    let searchBar = screen.getByTestId('mechanic-search');
+    fireEvent.change(searchBar, {
+      target: { value: 'kjbcjahdb' },
+    });
+    fireEvent.keyDown(searchBar, { key: 'Enter', code: 'Enter' });
+    expect(mockSubmitFunction).not.toHaveBeenCalled();
+  });
+
   test('input correct value calls submit function', () => {
     setup();
-    const searchBar = screen.getByTestId('mechanic-search');
+    let searchBar = screen.getByTestId('mechanic-search');
     fireEvent.change(searchBar, {
       target: { value: '18XX' },
     });

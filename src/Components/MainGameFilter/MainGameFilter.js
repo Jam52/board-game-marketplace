@@ -32,6 +32,10 @@ class MainGameFilter extends Component {
     }
   };
 
+  submitSearchHandler = () => {
+    console.log('SUBMIT');
+  };
+
   render() {
     let mechanicsOptions = <option>Unknown</option>;
     let categoryOptions = <option>Unknown</option>;
@@ -63,6 +67,7 @@ class MainGameFilter extends Component {
           valid={this.state.categories}
           for="categories"
           placeholder="Category Search"
+          submit={this.submitSearchHandler}
         />
         <label htmlFor="mechanics">Add a Mechnic</label>
         <select data-testid="mechanics-dropdown" id="mechanics">
