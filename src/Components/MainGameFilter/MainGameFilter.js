@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchOptions } from '../../services/boardgameApi';
+import { fetchDropdownOptions } from '../../services/boardgameApi';
 
 class MainGameFilter extends Component {
   state = {
@@ -12,20 +12,17 @@ class MainGameFilter extends Component {
     this.setState({
       status: 'loading',
     });
-    const categoryData = await this.fetchDropdownOptions('categories');
-    const mechanicsData = await this.fetchDropdownOptions('mechanics');
+    const responseData = await this.fetchDropdownOptions();
     this.setState({
-      categories: await categoryData.categories,
-    });
-    this.setState({
-      mechanics: await mechanicsData.mechanics,
+      categories: await responseData.categories,
+      mechanics: await responseData.mechanics,
       status: 'done',
     });
   };
 
-  fetchDropdownOptions = async (term) => {
+  fetchDropdownOptions = async (trm) => {
     try {
-      const dataFromApi = await fetchOptions(term);
+      const dataFromApi = await fetchDropdownOptions();
       return await dataFromApi;
     } catch (error) {
       this.setState({
@@ -37,7 +34,7 @@ class MainGameFilter extends Component {
   render() {
     let mechanicsOptions = <option>Unknown</option>;
     let categoryOptions = <option>Unknown</option>;
-    if (this.state.categories.length > 0) {
+    if (this.state.status === 'done') {
       categoryOptions = this.state.categories.map((category, index) => {
         return (
           <option key={index} value={category.id} data-testid="category-option">
@@ -45,11 +42,9 @@ class MainGameFilter extends Component {
           </option>
         );
       });
-    }
-    if (this.state.mechanics.length > 0) {
       mechanicsOptions = this.state.mechanics.map((mechanic, index) => {
         return (
-          <option key={index} value={mechanic.id} data-test="category-option">
+          <option key={index} value={mechanic.id} data-testid="mechanic-option">
             {mechanic.name}
           </option>
         );

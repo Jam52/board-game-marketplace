@@ -1,6 +1,12 @@
 import axios from '../axios';
 
-export const fetchOptions = async (term) => {
-  const response = await axios.get(`${term}`);
-  return await response.data;
+export const fetchDropdownOptions = async (term) => {
+  const categories = await axios.get(`categories`);
+  const mechanics = await axios.get(`mechanics`);
+  const data = {
+    categories: await categories.data.categories,
+    mechanics: await mechanics.data.mechanics,
+  };
+  console.log(data);
+  return await data;
 };

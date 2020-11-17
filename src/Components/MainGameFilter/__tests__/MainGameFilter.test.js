@@ -2,14 +2,14 @@ import React from 'react';
 import { render, screen, wait } from '@testing-library/react';
 import { findByTestAttr } from '../../../testUtils/testUtil';
 import MainGameFilter from '../MainGameFilter';
-import { fetchOptions } from '../../../services/boardgameApi';
+import { fetchDropdownOptions } from '../../../services/boardgameApi';
 
 jest.mock('../../../services/boardgameApi.js');
 
 describe('MainGameFilter', () => {
   test('fetch data call is called on mount', async () => {
     render(<MainGameFilter />);
-    expect(fetchOptions).toHaveBeenCalledTimes(1);
+    expect(fetchDropdownOptions).toHaveBeenCalledTimes(1);
   });
   test('fetched category data desplayed in dropdown', async () => {
     render(<MainGameFilter />);
