@@ -1,4 +1,4 @@
-export const fakeCategoryData = {
+export const fakeDropdownData = {
   categories: [
     {
       id: '2bdFPJUvFo',
@@ -28,9 +28,9 @@ export const fakeCategoryData = {
   ],
 };
 
-export const categoryOptions = async () => {
-  const response = await new Promise((resolve) => {
-    resolve(fakeCategoryData);
+export default async (term) => {
+  const response = new Promise((resolve) => {
+    resolve(fakeDropdownData);
   });
-  return await response.categories;
+  return await response;
 };

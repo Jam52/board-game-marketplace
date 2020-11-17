@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import { categoryOptions } from '../../services/boardgameApi';
+import boardgameApi from '../../services/boardgameApi';
 
 class MainGameFilter extends Component {
   state = {
     categories: [],
+    mechanics: [],
+    status: false,
   };
 
   componentDidMount = async () => {
-    const fetchCategories = await categoryOptions();
     this.setState({
-      categories: fetchCategories,
+      status: 'loading',
     });
+    const categoryData = await this.fetchCategories();
+    this.setState({
+      categories: categoryData,
+      status: 'done',
+    });
+  };
+
+  fetchCategories = async () => {
+    try {
+      const categoriesFromApi = await boardgameApi('categories');
+      return await categoriesFromApi.categories;
+    } catch (error) {
+      this.setState({
+        statue: 'error',
+      });
+    }
   };
 
   render() {
     let categoryOptions = <option>Unknown</option>;
-    if (this.state.categories.length > 0) {
+    if (this.state.status === 'done') {
       categoryOptions = this.state.categories.map((category, index) => {
         return (
           <option key={index} value={category.id} data-test="category-option">
