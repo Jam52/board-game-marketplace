@@ -7,6 +7,5 @@ export const fetchDropdownOptions = async (term) => {
     categories: await categories.data.categories,
     mechanics: await mechanics.data.mechanics,
   };
-  console.log(data);
   return await data;
 };

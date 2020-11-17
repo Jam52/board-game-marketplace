@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchBar from '../../Components/SearchBar/SearchBar';
 import { fetchDropdownOptions } from '../../services/boardgameApi';
 
 class MainGameFilter extends Component {
@@ -52,16 +53,28 @@ class MainGameFilter extends Component {
     }
     return (
       <form data-testid="component-main-game-filter">
-        <label htmlFor="category">Add a category</label>
-        <select data-testid="categories-dropdown" id="category">
+        <label htmlFor="categories">Add a category</label>
+        <select data-testid="categories-dropdown" id="categories">
           <option>Categories</option>
           {categoryOptions}
         </select>
-
-        <select data-testid="mechanics-dropdown">
+        <SearchBar
+          testid="category-search"
+          valid={this.state.categories}
+          for="categories"
+          placeholder="Category Search"
+        />
+        <label htmlFor="mechanics">Add a Mechnic</label>
+        <select data-testid="mechanics-dropdown" id="mechanics">
           <option>Mechanics</option>
           {mechanicsOptions}
         </select>
+        <SearchBar
+          testid="mechanic-search"
+          valid={this.state.mechanics}
+          for="mechanics"
+          placeholder="Mechanic Search"
+        />
       </form>
     );
   }
