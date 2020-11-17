@@ -61,7 +61,9 @@ class MainGameFilter extends Component {
       <form data-testid="component-main-game-filter" className={classes.form}>
         <div className={classes.mainSearch}>
           <div className={classes.mainSearch_section}>
-            <label htmlFor="categories">Add a category</label>
+            <label className={classes.mainSearch_label} htmlFor="categories">
+              Add a category
+            </label>
             <div className={classes.mainSearch_inputs}>
               <select
                 data-testid="categories-dropdown"
@@ -82,7 +84,9 @@ class MainGameFilter extends Component {
           </div>
 
           <div className={classes.mainSearch_section}>
-            <label htmlFor="mechanics">Add a Mechnic</label>
+            <label className={classes.mainSearch_label} htmlFor="mechanics">
+              Add a Mechnic
+            </label>
             <div className={classes.mainSearch_inputs}>
               <select
                 data-testid="mechanics-dropdown"

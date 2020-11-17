@@ -12,6 +12,7 @@
 label {
   color: $color_orange;
   font-family: $font_title;
+  font-weight: bold;
 }
 
 .mainSearch {
@@ -44,7 +45,6 @@ label {
   }
   &_label {
     font-size: 0.85rem;
-    margin-bottom: 0.5rem;
   }
   &_dropdown,
   &_input {

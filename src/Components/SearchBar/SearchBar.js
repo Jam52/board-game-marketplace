@@ -7,10 +7,11 @@ const SearchBar = (props) => {
   let [isValid, setValid] = useState(true);
 
   const submitHandler = (event) => {
+    setValid(true);
+    event.target.placeholder = props.placeholder;
     if (event.key === 'Enter') {
       const submitValue = event.target.value.toLowerCase();
       if (validEntries.includes(submitValue)) {
-        setValid(true);
         props.submit(submitValue);
       } else {
         setValid(false);
