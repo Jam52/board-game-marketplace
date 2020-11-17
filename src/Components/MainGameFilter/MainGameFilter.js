@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import boardgameApi from '../../services/boardgameApi';
+import { fetchOptions } from '../../services/boardgameApi';
 
 class MainGameFilter extends Component {
   state = {
@@ -12,39 +12,62 @@ class MainGameFilter extends Component {
     this.setState({
       status: 'loading',
     });
-    const categoryData = await this.fetchCategories();
+    const categoryData = await this.fetchDropdownOptions('categories');
+    const mechanicsData = await this.fetchDropdownOptions('mechanics');
     this.setState({
-      categories: categoryData,
+      categories: await categoryData.categories,
+    });
+    this.setState({
+      mechanics: await mechanicsData.mechanics,
       status: 'done',
     });
   };
 
-  fetchCategories = async () => {
+  fetchDropdownOptions = async (term) => {
     try {
-      const categoriesFromApi = await boardgameApi('categories');
-      return await categoriesFromApi.categories;
+      const dataFromApi = await fetchOptions(term);
+      return await dataFromApi;
     } catch (error) {
       this.setState({
-        statue: 'error',
+        status: 'error',
       });
     }
   };
 
   render() {
+    let mechanicsOptions = <option>Unknown</option>;
     let categoryOptions = <option>Unknown</option>;
-    if (this.state.status === 'done') {
+    if (this.state.categories.length > 0) {
       categoryOptions = this.state.categories.map((category, index) => {
         return (
-          <option key={index} value={category.id} data-test="category-option">
+          <option key={index} value={category.id} data-testid="category-option">
             {category.name}
           </option>
         );
       });
     }
+    if (this.state.mechanics.length > 0) {
+      mechanicsOptions = this.state.mechanics.map((mechanic, index) => {
+        return (
+          <option key={index} value={mechanic.id} data-test="category-option">
+            {mechanic.name}
+          </option>
+        );
+      });
+    }
     return (
-      <div data-test="component-main-game-filter">
-        <select data-test="category-dropdown">{categoryOptions}</select>
-      </div>
+      <form data-testid="component-main-game-filter">
+        <label htmlFor="category">Add a category</label>
+        <select data-testid="categories-dropdown" id="category">
+          <option>Categories</option>
+          {categoryOptions}
+        </select>
+
+        <select data-testid="mechanics-dropdown">
+          <option>Mechanics</option>
+          {mechanicsOptions}
+        </select>
+      </form>
     );
   }
 }

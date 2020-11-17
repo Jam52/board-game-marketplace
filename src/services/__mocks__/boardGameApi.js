@@ -28,9 +28,18 @@ export const fakeDropdownData = {
   ],
 };
 
-export default async (term) => {
+// export const fetchOptions = async (term) => {
+//   console.log('in mock');
+//   const response = new Promise((resolve) => {
+//     resolve(fakeDropdownData);
+//   });
+//   return await response;
+// };
+
+export const fetchOptions = jest.fn().mockImplementation(async (term) => {
+  console.log('in mock');
   const response = new Promise((resolve) => {
     resolve(fakeDropdownData);
   });
   return await response;
-};
+});

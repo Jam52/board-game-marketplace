@@ -1,31 +1,45 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen, wait } from '@testing-library/react';
 import { findByTestAttr } from '../../../testUtils/testUtil';
 import MainGameFilter from '../MainGameFilter';
+import { fetchOptions } from '../../../services/boardgameApi';
 
 jest.mock('../../../services/boardgameApi.js');
 
-const setup = () => {
-  const wrapper = shallow(<MainGameFilter />);
-  return wrapper;
-};
-
 describe('MainGameFilter', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = setup();
+  test('fetch data call is called on mount', async () => {
+    render(<MainGameFilter />);
+    expect(fetchOptions).toHaveBeenCalledTimes(1);
   });
-
-  test('fetches category data and displays options in dropdown', (done) => {
-    setImmediate(() => {
-      wrapper.update();
-      expect(findByTestAttr(wrapper, 'category-option')).toHaveLength(5);
-      done();
-    }, 1);
+  test('fetched category data desplayed in dropdown', async () => {
+    render(<MainGameFilter />);
+    await wait(() => {
+      expect(screen.getAllByTestId('category-option')).toHaveLength(5);
+    });
   });
-
+  test('fetched mechanics data desplayed in dropdown', async () => {
+    render(<MainGameFilter />);
+    await wait(() => {
+      expect(screen.getAllByTestId('mechanic-option')).toHaveLength(5);
+    });
+  });
+  test('renders container component', () => {
+    render(<MainGameFilter />);
+    expect(
+      screen.getByTestId('component-main-game-filter'),
+    ).toBeInTheDocument();
+  });
   test('renders category dropdown', () => {
-    expect(findByTestAttr(wrapper, 'category-dropdown')).toHaveLength(1);
+    render(<MainGameFilter />);
+    expect(screen.getByTestId('categories-dropdown')).toBeInTheDocument();
+  });
+  test('renders mechanics dropdown', () => {
+    render(<MainGameFilter />);
+    expect(screen.getByTestId('mechanics-dropdown')).toBeInTheDocument();
+  });
+
+  test('dropdowns contain unknown before data is fetched', async () => {
+    render(<MainGameFilter />);
+    expect(screen.getAllByText('Unknown')).toHaveLength(2);
   });
 });
