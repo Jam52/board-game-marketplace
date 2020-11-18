@@ -12,7 +12,7 @@ const SearchBar = (props) => {
     if (event.key === 'Enter') {
       const submitValue = event.target.value.toLowerCase();
       if (validEntries.includes(submitValue)) {
-        props.submit(submitValue);
+        props.submit(submitValue, props.valid);
       } else {
         setValid(false);
         event.target.placeholder = 'Not Found';

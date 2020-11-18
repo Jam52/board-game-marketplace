@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, wait } from '@testing-library/react';
+import { render, screen, wait, fireEvent } from '@testing-library/react';
 import MainGameFilter from '../MainGameFilter';
 import { fetchDropdownOptions } from '../../../services/boardgameApi';
 

@@ -7,16 +7,19 @@ const validOptions = [
     id: '2bdFPJUvFo',
     name: '18XX',
     url: 'https://www.boardgameatlas.com/category/2bdFPJUvFo/18xx',
+    type: 'category',
   },
   {
     id: '85OKv8p5Ow',
     name: '4x',
     url: 'https://www.boardgameatlas.com/category/85OKv8p5Ow/4x',
+    type: 'category',
   },
   {
     id: 'hBqZ3Ar4RJ',
     name: 'Abstract',
     url: 'https://www.boardgameatlas.com/category/hBqZ3Ar4RJ/abstract',
+    type: 'category',
   },
 ];
 
@@ -58,5 +61,23 @@ describe('SearchBar', () => {
     });
     fireEvent.keyDown(searchBar, { key: 'Enter', code: 'Enter' });
     expect(mockSubmitFunction).toHaveBeenCalled();
+  });
+
+  test('input correct value passes correct output to submit function', () => {
+    const expectedArgument = {
+      id: '2bdFPJUvFo',
+      name: '18XX',
+      url: 'https://www.boardgameatlas.com/category/2bdFPJUvFo/18xx',
+    };
+    setup();
+    let searchBar = screen.getByTestId('mechanic-search');
+    fireEvent.change(searchBar, {
+      target: { value: '18XX' },
+    });
+    fireEvent.keyDown(searchBar, { key: 'Enter', code: 'Enter' });
+    expect(mockSubmitFunction).toHaveBeenCalledWith(
+      expectedArgument.name.toLowerCase(),
+      validOptions,
+    );
   });
 });

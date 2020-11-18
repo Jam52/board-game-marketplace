@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import { fetchDropdownOptions } from '../../services/boardgameApi';
 import classes from './MainGameFilter.module.scss';
+import Label from '../../Components/Label/Label';
 
 class MainGameFilter extends Component {
   state = {
@@ -17,8 +18,12 @@ class MainGameFilter extends Component {
     });
     const responseData = await this.fetchDropdownOptions();
     this.setState({
-      categories: await responseData.categories,
-      mechanics: await responseData.mechanics,
+      categories: await responseData.categories.map((item) => {
+        return { ...item, type: 'category' };
+      }),
+      mechanics: await responseData.mechanics.map((item) => {
+        return { ...item, type: 'mechanic' };
+      }),
       status: 'done',
     });
   };
@@ -34,8 +39,22 @@ class MainGameFilter extends Component {
     }
   };
 
-  submitSearchHandler = () => {
-    console.log('SUBMIT');
+  returnLabelObject = (name, data) => {
+    const objectFromData = data.filter(
+      (item) => item.name.toLowerCase() === name.toLowerCase(),
+    );
+    return objectFromData[0];
+  };
+
+  selectMainLabelHandler = (event, data) => {
+    const labelObject = this.returnLabelObject(event.target.value, data);
+    this.setState({
+      selectedLabels: [...this.state.selectedLabels, labelObject],
+    });
+  };
+
+  submitMainLabelHandler = (name, data) => {
+    const labelObject = this.returnLabelObject(name, data);
   };
 
   render() {
@@ -44,14 +63,22 @@ class MainGameFilter extends Component {
     if (this.state.status === 'done') {
       categoryOptions = this.state.categories.map((category, index) => {
         return (
-          <option key={index} value={category.id} data-testid="category-option">
+          <option
+            key={index}
+            value={category.name}
+            data-testid="category-option"
+          >
             {category.name}
           </option>
         );
       });
       mechanicsOptions = this.state.mechanics.map((mechanic, index) => {
         return (
-          <option key={index} value={mechanic.id} data-testid="mechanic-option">
+          <option
+            key={index}
+            value={mechanic.name}
+            data-testid="mechanic-option"
+          >
             {mechanic.name}
           </option>
         );
@@ -69,6 +96,9 @@ class MainGameFilter extends Component {
                 data-testid="categories-dropdown"
                 id="categories"
                 className={classes.mainSearch_dropdown}
+                onChange={(event) =>
+                  this.selectMainLabelHandler(event, this.state.categories)
+                }
               >
                 <option>Categories</option>
                 {categoryOptions}
@@ -78,7 +108,7 @@ class MainGameFilter extends Component {
                 valid={this.state.categories}
                 for="categories"
                 placeholder="Category Search"
-                submit={this.submitSearchHandler}
+                submit={this.submitMainLabelHandler}
               />
             </div>
           </div>
@@ -92,6 +122,9 @@ class MainGameFilter extends Component {
                 data-testid="mechanics-dropdown"
                 id="mechanics"
                 className={classes.mainSearch_dropdown}
+                onChange={(event) =>
+                  this.selectMainLabelHandler(event, this.state.mechanics)
+                }
               >
                 <option>Mechanics</option>
                 {mechanicsOptions}
@@ -101,6 +134,7 @@ class MainGameFilter extends Component {
                 valid={this.state.mechanics}
                 for="mechanics"
                 placeholder="Mechanic Search"
+                submit={this.submitMainLabelHandler}
               />
             </div>
           </div>
@@ -164,6 +198,13 @@ class MainGameFilter extends Component {
               <option value="max_playtime">Play Time</option>
             </select>
           </div>
+        </div>
+        <div className={classes.labelContainer}>
+          {this.state.selectedLabels.length > 0
+            ? this.state.selectedLabels.map((obj) => {
+                return <Label labelObj={obj} />;
+              })
+            : null}
         </div>
       </form>
     );
