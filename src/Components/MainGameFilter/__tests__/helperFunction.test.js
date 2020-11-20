@@ -66,3 +66,31 @@ test('return param string with all mechanics in one param', () => {
     expect.stringMatching(stringRegex),
   );
 });
+
+test('return param string with all year published as a param', () => {
+  const stringRegex = /year_published=2000/;
+  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
+    expect.stringMatching(stringRegex),
+  );
+});
+
+test('return param string with all player count as a param', () => {
+  const stringRegex = /player_count=4/;
+  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
+    expect.stringMatching(stringRegex),
+  );
+});
+
+test('return param string with all order by as a param', () => {
+  const stringRegex = /order_by=popularity/;
+  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
+    expect.stringMatching(stringRegex),
+  );
+});
+
+test('return param string with all play time as a param', () => {
+  const stringRegex = /play_time=15/;
+  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
+    expect.stringMatching(stringRegex),
+  );
+});

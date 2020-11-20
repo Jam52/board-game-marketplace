@@ -7,5 +7,10 @@ export const fetchDropdownOptions = async (term) => {
     categories: await categories.data.categories,
     mechanics: await mechanics.data.mechanics,
   };
-  return await data;
+  return data;
+};
+
+export const fetchGameData = async (searchQuery) => {
+  const data = await axios.get(searchQuery);
+  return data;
 };

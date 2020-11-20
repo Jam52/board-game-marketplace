@@ -77,6 +77,8 @@ describe('MainGameFilter', () => {
                 type: 'category',
               },
             ],
+            gameData = [],
+            loading: false
           }}
         >
           <MainGameFilter {...props} />

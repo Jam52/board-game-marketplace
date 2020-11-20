@@ -1,10 +1,17 @@
 export const searchQueryFromSelectedLabels = (selectedLabels) => {
-  const categoryQuery = selectedLabels
-    .filter((label) => label.type === 'category')
-    .map((label) => label.id);
-  const mechanicQuery = selectedLabels
-    .filter((label) => label.type === 'mechanic')
-    .map((label) => label.id);
-  const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}`;
+  const categoryQuery = returnIdFromLabel(selectedLabels, 'category');
+  const mechanicQuery = returnIdFromLabel(selectedLabels, 'mechanic');
+  const yearQuery = returnIdFromLabel(selectedLabels, 'year-published');
+  const playTimeQuery = returnIdFromLabel(selectedLabels, 'play-time');
+  const orberByQuery = returnIdFromLabel(selectedLabels, 'order-by');
+  const playerCountQuery = returnIdFromLabel(selectedLabels, 'player-count');
+  const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${orberByQuery}&player_count=${playerCountQuery}`;
+  console.log(query);
   return query;
+};
+
+const returnIdFromLabel = (labels, category) => {
+  return labels
+    .filter((label) => label.type === category)
+    .map((label) => label.id);
 };
