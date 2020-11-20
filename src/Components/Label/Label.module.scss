@@ -1,0 +1,19 @@
+@import '../../CSS/base.scss';
+
+.label {
+  display: flex;
+  padding: 0.2em 0.5em;
+  background-color: $color_orange;
+  border-radius: 0.2rem;
+  color: #fff;
+  align-items: center;
+
+  &_name {
+    margin-left: 1rem;
+    font-size: 0.7rem;
+  }
+
+  &_cancel {
+    cursor: pointer;
+  }
+}

@@ -1,11 +1,17 @@
 import React from 'react';
+import classes from './Label.module.scss';
 
 const Label = (props) => {
-  const testid = `${props.labelObj.type}-label`;
   return (
-    <div data-testid={testid}>
-      <p>X</p>
-      <p>{props.labelObj.name}</p>
+    <div data-testid="label" className={classes.label}>
+      <p
+        data-testid="label-cancel"
+        onClick={props.remove}
+        className={classes.label_cancel}
+      >
+        X
+      </p>
+      <p className={classes.label_name}>{props.labelObj.name}</p>
     </div>
   );
 };

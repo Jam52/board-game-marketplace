@@ -57,6 +57,12 @@ label {
   }
 }
 
+.labelContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 0.5rem;
+}
+
 @media (min-width: $media-tablet) {
   .mainSearch {
     flex-direction: row;
