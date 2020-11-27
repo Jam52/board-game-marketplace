@@ -47,7 +47,6 @@ class MainGameFilter extends Component {
   }
 
   componentDidUpdate = async (prevProps, prevState) => {
-    console.log(this.state.selectedLabels.length);
     if (
       prevState.selectedLabels.length != this.state.selectedLabels.length &&
       this.state.selectedLabels.length > 0
@@ -57,7 +56,6 @@ class MainGameFilter extends Component {
       );
       this.setState({ loading: true });
       const gameData = await fetchGameData(searchQuery);
-      console.log(gameData);
       this.setState({ gameData: await gameData.data.games, loading: false });
     }
   };
@@ -84,6 +82,7 @@ class MainGameFilter extends Component {
     if (event.target.value !== 'null') {
       const labelObject = this.returnLabelObject(event.target.value, data);
       this.addLabelObjToSelectedLabels(labelObject);
+      event.target.children[0].selected = true;
     }
   };
 
@@ -94,20 +93,16 @@ class MainGameFilter extends Component {
 
   selectSubLabelHandler = (event, category) => {
     const value = event.target.value;
+    this.removeLabelFromSelectedLabels(category);
     if (value !== 'null') {
-      if (
-        this.state.selectedLabels.map((label) => label.type).includes(category)
-      ) {
-        alert('filter type already set, please remove existing filter first.');
-      } else {
-        const sufix = event.currentTarget.getAttribute('data-label');
-        const labelObj = {
-          id: value,
-          name: `${value} ${sufix}`,
-          type: category,
-        };
-        this.addLabelObjToSelectedLabels(labelObj);
-      }
+      const sufix = event.currentTarget.getAttribute('data-label');
+      const labelObj = {
+        id: value,
+        name: `${value} ${sufix}`,
+        type: category,
+      };
+      console.log(labelObj);
+      setTimeout(() => this.addLabelObjToSelectedLabels(labelObj), 100);
     }
   };
 
@@ -120,6 +115,13 @@ class MainGameFilter extends Component {
     this.setState({
       selectedLabels: [...this.state.selectedLabels, labelObj],
     });
+  };
+
+  removeLabelFromSelectedLabels = (category) => {
+    const newSelectedLabels = this.state.selectedLabels.filter(
+      (label) => label.type !== category,
+    );
+    this.setState({ selectedLabels: newSelectedLabels });
   };
 
   removeLabelHandler = (labelObj) => {
@@ -210,7 +212,9 @@ class MainGameFilter extends Component {
                     this.selectMainLabelHandler(event, this.state.mechanics)
                   }
                 >
-                  <option value="null">Mechanics</option>
+                  <option value="null" selected>
+                    Mechanics
+                  </option>
                   {mechanicsOptions}
                 </select>
                 <SearchBar
@@ -264,7 +268,7 @@ class MainGameFilter extends Component {
                 <option value="60">60 Mins</option>
                 <option value="90">90 Mins</option>
                 <option value="120">120 Mins</option>
-                <option value="120+">120+ Mins</option>
+                <option value="240">240 Mins</option>
               </select>
             </div>
             <div className={classes.subSearch_section}>
@@ -301,7 +305,9 @@ class MainGameFilter extends Component {
                 }
               >
                 <option value="null">Order by</option>
-                <option value="average_user_rating">Popularity</option>
+                <option value="name">Name</option>
+                <option value="average_user_rating">Average User Rating</option>
+                <option value="popularity">Popularity</option>
                 <option value="price">Price</option>
                 <option value="year published">Year Published</option>
                 <option value="max playtime">Play Time</option>
@@ -310,15 +316,21 @@ class MainGameFilter extends Component {
           </div>
           <div className={classes.labelContainer}>
             {this.state.selectedLabels.length > 0
-              ? this.state.selectedLabels.map((obj, index) => {
-                  return (
-                    <Label
-                      key={index}
-                      labelObj={obj}
-                      remove={() => this.removeLabelHandler(obj)}
-                    />
-                  );
-                })
+              ? this.state.selectedLabels
+                  .filter((label) => {
+                    return (
+                      label.type === 'category' || label.type === 'mechanic'
+                    );
+                  })
+                  .map((obj, index) => {
+                    return (
+                      <Label
+                        key={index}
+                        labelObj={obj}
+                        remove={() => this.removeLabelHandler(obj)}
+                      />
+                    );
+                  })
               : null}
           </div>
         </form>
