@@ -17,6 +17,7 @@ class MainGameFilter extends Component {
     status: false,
     selectedLabels: [],
     gameData: [],
+    gameDataLength: 0,
     loading: false,
   };
 
@@ -56,7 +57,11 @@ class MainGameFilter extends Component {
       );
       this.setState({ loading: true });
       const gameData = await fetchGameData(searchQuery);
-      this.setState({ gameData: await gameData.data.games, loading: false });
+      this.setState({
+        gameData: await gameData.data.games,
+        loading: false,
+        gameDataLength: await gameData.length,
+      });
     }
   };
 
@@ -230,7 +235,7 @@ class MainGameFilter extends Component {
           <div className={classes.subSearch}>
             <div className={classes.subSearch_section}>
               <label className={classes.subSearch_label} htmlFor="player count">
-                Max Player Count
+                Player Count
               </label>
               <select
                 id="player count"
