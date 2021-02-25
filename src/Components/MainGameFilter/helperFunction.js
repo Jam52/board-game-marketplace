@@ -6,7 +6,6 @@ export const searchQueryFromSelectedLabels = (selectedLabels) => {
   const orberByQuery = returnIdFromLabel(selectedLabels, 'order-by');
   const playerCountQuery = returnIdFromLabel(selectedLabels, 'player-count');
   const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${orberByQuery}&player_count=${playerCountQuery}`;
-  console.log(query);
   return query;
 };
 

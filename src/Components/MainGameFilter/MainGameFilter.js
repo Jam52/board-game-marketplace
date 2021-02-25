@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBar from '../../Components/SearchBar/SearchBar';
+
 import {
   fetchDropdownOptions,
   fetchGameData,
@@ -9,11 +9,14 @@ import Label from '../../Components/Label/Label';
 import { searchQueryFromSelectedLabels } from './helperFunction';
 import GameCardList from '../../Components/GameCardList/GameCardList';
 import Spinner from '../../Components/Spinner/Spinner';
+import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 
 class MainGameFilter extends Component {
   state = {
     categories: [],
+    filteredCategories: [],
     mechanics: [],
+    filteredMechanics: [],
     status: false,
     selectedLabels: [],
     gameData: [],
@@ -22,7 +25,6 @@ class MainGameFilter extends Component {
   };
 
   componentDidMount = async () => {
-    this._isMounted = true;
     if (
       this.state.categories.length === 0 ||
       this.state.mechanics.length === 0
@@ -43,25 +45,28 @@ class MainGameFilter extends Component {
     }
   };
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   componentDidUpdate = async (prevProps, prevState) => {
     if (
-      prevState.selectedLabels.length != this.state.selectedLabels.length &&
+      prevState.selectedLabels.length !== this.state.selectedLabels.length &&
       this.state.selectedLabels.length > 0
     ) {
       const searchQuery = searchQueryFromSelectedLabels(
         this.state.selectedLabels,
       );
-      this.setState({ loading: true });
-      const gameData = await fetchGameData(searchQuery);
-      this.setState({
-        gameData: await gameData.data.games,
-        loading: false,
-        gameDataLength: await gameData.length,
-      });
+      try {
+        this.setState({ loading: true });
+        const gameData = await fetchGameData(searchQuery);
+        console.log(gameData);
+        this.setState({
+          gameData: await gameData.data.games,
+          loading: false,
+          gameDataLength: await gameData.data.length,
+          filteredMechanics: await gameData.data.mechanics,
+          filteredCategories: await gameData.data.categories,
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -77,10 +82,10 @@ class MainGameFilter extends Component {
   };
 
   returnLabelObject = (name, data) => {
-    const objectFromData = data.filter(
+    const objectFromData = data.find(
       (item) => item.name.toLowerCase() === name.toLowerCase(),
     );
-    return objectFromData[0];
+    return objectFromData;
   };
 
   selectMainLabelHandler = (event, data) => {
@@ -106,7 +111,6 @@ class MainGameFilter extends Component {
         name: `${value} ${sufix}`,
         type: category,
       };
-      console.log(labelObj);
       setTimeout(() => this.addLabelObjToSelectedLabels(labelObj), 100);
     }
   };
@@ -138,33 +142,6 @@ class MainGameFilter extends Component {
   };
 
   render() {
-    let mechanicsOptions = <option>Unknown</option>;
-    let categoryOptions = <option>Unknown</option>;
-    if (this.state.status === 'done') {
-      categoryOptions = this.state.categories.map((category, index) => {
-        return (
-          <option
-            key={index}
-            value={category.name}
-            data-testid="category-option"
-          >
-            {category.name}
-          </option>
-        );
-      });
-      mechanicsOptions = this.state.mechanics.map((mechanic, index) => {
-        return (
-          <option
-            key={index}
-            value={mechanic.name}
-            data-testid="mechanic-option"
-          >
-            {mechanic.name}
-          </option>
-        );
-      });
-    }
-
     let gameCards = null;
     if (this.state.selectedLabels.length > 0) {
       if (this.state.loading) {
@@ -178,59 +155,22 @@ class MainGameFilter extends Component {
       <div>
         <form data-testid="component-main-game-filter" className={classes.form}>
           <div className={classes.mainSearch}>
-            <div className={classes.mainSearch_section}>
-              <label className={classes.mainSearch_label} htmlFor="categories">
-                Add a category
-              </label>
-              <div className={classes.mainSearch_inputs}>
-                <select
-                  data-testid="categories-dropdown"
-                  id="categories"
-                  className={classes.mainSearch_dropdown}
-                  onChange={(event) =>
-                    this.selectMainLabelHandler(event, this.state.categories)
-                  }
-                >
-                  <option value="null">Categories</option>
-                  {categoryOptions}
-                </select>
-                <SearchBar
-                  testid="category-search"
-                  valid={this.state.categories}
-                  for="categories"
-                  placeholder="Category Search"
-                  submit={this.submitMainLabelHandler}
-                />
-              </div>
-            </div>
-
-            <div className={classes.mainSearch_section}>
-              <label className={classes.mainSearch_label} htmlFor="mechanics">
-                Add a Mechnic
-              </label>
-              <div className={classes.mainSearch_inputs}>
-                <select
-                  data-testid="mechanics-dropdown"
-                  id="mechanics"
-                  className={classes.mainSearch_dropdown}
-                  onChange={(event) =>
-                    this.selectMainLabelHandler(event, this.state.mechanics)
-                  }
-                >
-                  <option value="null" selected>
-                    Mechanics
-                  </option>
-                  {mechanicsOptions}
-                </select>
-                <SearchBar
-                  testid="mechanic-search"
-                  valid={this.state.mechanics}
-                  for="mechanics"
-                  placeholder="Mechanic Search"
-                  submit={this.submitMainLabelHandler}
-                />
-              </div>
-            </div>
+            <CategoryDropdown
+              for="category"
+              filteredCategories={this.state.filteredCategories}
+              selectArray={this.state.categories}
+              selectedLabels={this.state.selectedLabels}
+              onChangeHandler={this.selectMainLabelHandler}
+              status={this.state.status}
+            />
+            <CategoryDropdown
+              for="mechanic"
+              filteredCategories={this.state.filteredMechanics}
+              selectArray={this.state.mechanics}
+              selectedLabels={this.state.selectedLabels}
+              onChangeHandler={this.selectMainLabelHandler}
+              status={this.state.status}
+            />
           </div>
           <div className={classes.subSearch}>
             <div className={classes.subSearch_section}>

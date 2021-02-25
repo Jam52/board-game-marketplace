@@ -39,7 +39,7 @@ const GameCard = (props) => {
       <h3 className={classes.gamecard_title}>{props.game.name}</h3>
 
       <div className={classes.gamecard_img}>
-        <img src={props.game.images.small} atl={props.game.name} />
+        <img src={props.game.thumb_url} atl={props.game.name} />
       </div>
       <div className={classes.gamecard_information}>
         <div>
