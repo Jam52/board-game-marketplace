@@ -51,33 +51,38 @@ class MainGameFilter extends Component {
 
   componentDidUpdate = async (prevProps, prevState) => {
     if (
-      prevState.selectedLabels.length !== this.state.selectedLabels.length &&
+      (prevState.selectedLabels.length !== this.state.selectedLabels.length ||
+        prevState.selectedSubLables !== this.state.selectedSubLables) &&
       this.state.selectedLabels.length > 0
     ) {
       const searchQuery = searchQueryFromSelectedLabels(
         this.state.selectedLabels,
+        this.state.selectedSubLables,
       );
-      try {
-        this.setState({ loading: true });
-        const gameData = await fetchGameData(searchQuery);
-        console.log(gameData);
-        this.setState({
-          gameData: await gameData.data.games,
-          loading: false,
-          gameDataLength: await gameData.data.length,
-          filteredMechanics: await gameData.data.mechanics,
-          filteredCategories: await gameData.data.categories,
-          playerCount: {
-            min: await gameData.data.min_players,
-            max: await gameData.data.max_players,
-          },
-          playtime: {
-            min: await gameData.data.min_playtime,
-            max: await gameData.data.max_playtime,
-          },
-        });
-      } catch (e) {
-        console.log(e);
+      if (this.state.selectedLabels.length !== 0) {
+        try {
+          this.setState({ loading: true });
+          const gameData = await fetchGameData(searchQuery);
+          console.log(gameData.data);
+          this.setState({
+            gameData: gameData.data.games,
+            loading: false,
+            gameDataLength: gameData.data.length,
+            filteredMechanics: gameData.data.mechanics,
+            filteredCategories: gameData.data.categories,
+            playerCount: {
+              min: gameData.data.min_players,
+              max: gameData.data.max_players,
+            },
+            playtime: {
+              min: gameData.data.min_playtime,
+              max: gameData.data.max_playtime,
+            },
+          });
+          console.log(this.state.selectedLabels);
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   };
@@ -107,16 +112,17 @@ class MainGameFilter extends Component {
   selectSubLabelHandler = (event, category) => {
     const value = event.target.value;
     console.log(value, category);
-    this.removeLabelFromSelectedLabels(category);
+    let newState = this.state.selectedSubLables.filter(
+      (label) => label.type !== category,
+    );
     if (value !== 'null') {
-      const sufix = event.currentTarget.getAttribute('data-label');
       const labelObj = {
         id: value,
-        name: `${value} ${sufix}`,
         type: category,
       };
-      setTimeout(() => this.addLabelObjToSelectedLabels(labelObj), 100);
+      newState = [...newState, labelObj];
     }
+    this.setState({ selectedSubLables: newState });
   };
 
   addLabelObjToSelectedLabels = async (labelObj) => {
@@ -128,21 +134,6 @@ class MainGameFilter extends Component {
     this.setState({
       selectedLabels: [...this.state.selectedLabels, labelObj],
     });
-  };
-
-  removeLabelFromSelectedLabels = (category) => {
-    const newSelectedLabels = this.state.selectedLabels.filter(
-      (label) => label.type !== category,
-    );
-    this.setState({ selectedLabels: newSelectedLabels });
-  };
-
-  removeLabelHandler = (labelObj) => {
-    const filteredSelectedLabels = this.state.selectedLabels.filter((obj) => {
-      return obj.name !== labelObj.name;
-    });
-
-    this.setState({ selectedLabels: filteredSelectedLabels });
   };
 
   render() {
@@ -225,28 +216,17 @@ class MainGameFilter extends Component {
                 }
               />
             </div>
-            <div className={classes.subSearch_section}>
-              <label className={classes.subSearch_label} htmlFor="order by">
-                Order By
-              </label>
-              <select
-                id="order by"
-                data-testid="order-by-dropdown"
-                data-label=""
-                className={classes.subSearch_dropdown}
-                onChange={(event) =>
-                  this.selectSubLabelHandler(event, 'order-by')
-                }
-              >
-                <option value="null">Order by</option>
-                <option value="name">Name</option>
-                <option value="average_user_rating">Average User Rating</option>
-                <option value="popularity">Popularity</option>
-                <option value="price">Price</option>
-                <option value="year published">Year Published</option>
-                <option value="max playtime">Play Time</option>
-              </select>
-            </div>
+            <SubLabelDropdown
+              for="order by"
+              selectArr={[
+                { value: 'null', label: 'order by' },
+                { value: 'name', label: 'name' },
+                { value: 'average_user_rating', label: 'user raiting' },
+                { value: 'year_published', label: 'year published' },
+                { value: 'max_playtime', label: 'playtime' },
+              ]}
+              selectHandler={this.selectSubLabelHandler}
+            />
           </div>
           <div className={classes.labelContainer}>
             {this.state.selectedLabels.length > 0

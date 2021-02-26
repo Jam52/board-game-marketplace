@@ -4,13 +4,15 @@ import classes from '../MainGameFilter.module.scss';
 const SubLabelDropdown = (props) => {
   let selectOptions = props.selectArr;
 
-  const boundries = props.selectBoundaries;
-  selectOptions = props.selectArr.filter((option) => {
-    if (option.value === 'null') {
-      return true;
-    }
-    return option.value > boundries.min && option.value < boundries.max;
-  });
+  if (props.selectBoundaries) {
+    const boundries = props.selectBoundaries;
+    selectOptions = props.selectArr.filter((option) => {
+      if (option.value === 'null') {
+        return true;
+      }
+      return option.value >= boundries.min && option.value <= boundries.max;
+    });
+  }
 
   return (
     <div className={classes.subSearch_section}>
