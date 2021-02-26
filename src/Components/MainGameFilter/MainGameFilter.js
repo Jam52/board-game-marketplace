@@ -136,6 +136,13 @@ class MainGameFilter extends Component {
     });
   };
 
+  removeLabelHandler = (labelObj) => {
+    const filteredSelectedLabels = this.state.selectedLabels.filter(
+      (label) => label.name !== labelObj.name,
+    );
+    this.setState({ selectedLabels: filteredSelectedLabels });
+  };
+
   render() {
     let gameCards = null;
     if (this.state.selectedLabels.length > 0) {
@@ -209,10 +216,8 @@ class MainGameFilter extends Component {
                 data-testid="year-published-input"
                 data-label="- year published"
                 className={classes.subSearch_input}
-                onKeyDown={(event) =>
-                  event.key === 'Enter'
-                    ? this.selectSubLabelHandler(event, 'year-published')
-                    : null
+                onChange={(event) =>
+                  this.selectSubLabelHandler(event, 'year-published')
                 }
               />
             </div>
