@@ -5,11 +5,12 @@ import {
   fetchGameData,
 } from '../../services/boardgameApi';
 import classes from './MainGameFilter.module.scss';
-import Label from '../../Components/Label/Label';
+import Label from './Label/Label';
 import { searchQueryFromSelectedLabels } from './helperFunction';
 import GameCardList from '../../Components/GameCardList/GameCardList';
 import Spinner from '../../Components/Spinner/Spinner';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
+import SubLabelDropdown from './SubLabelDropdown/SubLabelDropdown';
 
 class MainGameFilter extends Component {
   state = {
@@ -17,8 +18,11 @@ class MainGameFilter extends Component {
     filteredCategories: [],
     mechanics: [],
     filteredMechanics: [],
+    playerCount: { min: 0, max: 200 },
+    playtime: { min: 0, max: 1000 },
     status: false,
     selectedLabels: [],
+    selectedSubLables: [],
     gameData: [],
     gameDataLength: 0,
     loading: false,
@@ -63,6 +67,14 @@ class MainGameFilter extends Component {
           gameDataLength: await gameData.data.length,
           filteredMechanics: await gameData.data.mechanics,
           filteredCategories: await gameData.data.categories,
+          playerCount: {
+            min: await gameData.data.min_players,
+            max: await gameData.data.max_players,
+          },
+          playtime: {
+            min: await gameData.data.min_playtime,
+            max: await gameData.data.max_playtime,
+          },
         });
       } catch (e) {
         console.log(e);
@@ -81,28 +93,20 @@ class MainGameFilter extends Component {
     }
   };
 
-  returnLabelObject = (name, data) => {
-    const objectFromData = data.find(
-      (item) => item.name.toLowerCase() === name.toLowerCase(),
-    );
-    return objectFromData;
-  };
-
-  selectMainLabelHandler = (event, data) => {
-    if (event.target.value !== 'null') {
-      const labelObject = this.returnLabelObject(event.target.value, data);
+  selectMainLabelHandler = (event, categories) => {
+    const targetValue = event.target.value;
+    if (targetValue !== 'null') {
+      const labelObject = categories.find(
+        (cat) => cat.name.toLowerCase() === targetValue.toLowerCase(),
+      );
       this.addLabelObjToSelectedLabels(labelObject);
       event.target.children[0].selected = true;
     }
   };
 
-  submitMainLabelHandler = (name, data) => {
-    const labelObject = this.returnLabelObject(name, data);
-    this.addLabelObjToSelectedLabels(labelObject);
-  };
-
   selectSubLabelHandler = (event, category) => {
     const value = event.target.value;
+    console.log(value, category);
     this.removeLabelFromSelectedLabels(category);
     if (value !== 'null') {
       const sufix = event.currentTarget.getAttribute('data-label');
@@ -173,49 +177,34 @@ class MainGameFilter extends Component {
             />
           </div>
           <div className={classes.subSearch}>
-            <div className={classes.subSearch_section}>
-              <label className={classes.subSearch_label} htmlFor="player count">
-                Player Count
-              </label>
-              <select
-                id="player count"
-                data-testid="player-count-dropdown"
-                data-label="players"
-                className={classes.subSearch_dropdown}
-                onChange={(event) =>
-                  this.selectSubLabelHandler(event, 'player-count')
-                }
-              >
-                <option value="null">Player Count</option>
-                <option value="1">1 Player</option>
-                <option value="2">2 Players</option>
-                <option value="4">4 Players</option>
-                <option value="7">7 Players</option>
-                <option value="100">7+ Players</option>
-              </select>
-            </div>
-            <div className={classes.subSearch_section}>
-              <label className={classes.subSearch_label} htmlFor="play time">
-                Play Time
-              </label>
-              <select
-                id="play time"
-                data-testid="play-time-dropdown"
-                data-label="minutes"
-                className={classes.subSearch_dropdown}
-                onChange={(event) =>
-                  this.selectSubLabelHandler(event, 'play-time')
-                }
-              >
-                <option value="null">Play time</option>
-                <option value="15">15 Mins</option>
-                <option value="30 ">30 Mins</option>
-                <option value="60">60 Mins</option>
-                <option value="90">90 Mins</option>
-                <option value="120">120 Mins</option>
-                <option value="240">240 Mins</option>
-              </select>
-            </div>
+            <SubLabelDropdown
+              for="player count"
+              selectArr={[
+                { value: 'null', label: 'player count' },
+                { value: '1', label: '1 Player' },
+                { value: '2', label: '2 Players' },
+                { value: '4', label: '4 Players' },
+                { value: '7', label: '7 Players' },
+                { value: '10', label: '7+ Players' },
+              ]}
+              selectBoundaries={this.state.playerCount}
+              selectHandler={this.selectSubLabelHandler}
+            />
+
+            <SubLabelDropdown
+              for="play time"
+              selectArr={[
+                { value: 'null', label: 'play time' },
+                { value: '15', label: '15 mins' },
+                { value: '30', label: '30 mins' },
+                { value: '60', label: '60 mins' },
+                { value: '90', label: '90 mins' },
+                { value: '120', label: '120 mins' },
+                { value: '240', label: '240 mins' },
+              ]}
+              selectBoundaries={this.state.playtime}
+              selectHandler={this.selectSubLabelHandler}
+            />
             <div className={classes.subSearch_section}>
               <label
                 className={classes.subSearch_label}

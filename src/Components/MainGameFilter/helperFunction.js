@@ -4,8 +4,9 @@ export const searchQueryFromSelectedLabels = (selectedLabels) => {
   const yearQuery = returnIdFromLabel(selectedLabels, 'year-published');
   const playTimeQuery = returnIdFromLabel(selectedLabels, 'play-time');
   const orberByQuery = returnIdFromLabel(selectedLabels, 'order-by');
-  const playerCountQuery = returnIdFromLabel(selectedLabels, 'player-count');
-  const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${orberByQuery}&player_count=${playerCountQuery}`;
+  const playerCountQuery = returnIdFromLabel(selectedLabels, 'player count');
+  const asc = 'true';
+  const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${orberByQuery}&=${asc}&player_count=${playerCountQuery}`;
   return query;
 };
 

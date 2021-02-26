@@ -2,17 +2,17 @@ import React from 'react';
 import classes from '../MainGameFilter.module.scss';
 
 const CategoryDropdown = (props) => {
-  console.log(props.status);
   let categoryOptions = <option>Unknown</option>;
 
-  const filterSet = (option, filterSet) => {
+  // filters select array if selectedLables or fileredCategories is not === 0
+  const filterSet = (option, filteredCategories) => {
     if (props.selectedLabels.length === 0) {
       return true;
     }
-    if (!filterSet.length > 0) {
+    if (filteredCategories.length === 0) {
       return true;
     }
-    if (filterSet.includes(option.id)) {
+    if (filteredCategories.includes(option.id)) {
       return true;
     }
     return false;
@@ -29,7 +29,7 @@ const CategoryDropdown = (props) => {
             key={index}
             value={category.name}
             data-id={category.id}
-            data-testid="category-option"
+            data-testid={category.id}
           >
             {category.name}
           </option>
