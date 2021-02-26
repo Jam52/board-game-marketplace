@@ -5,16 +5,12 @@ const SubLabelDropdown = (props) => {
   let selectOptions = props.selectArr;
 
   const boundries = props.selectBoundaries;
-  console.log(boundries);
   selectOptions = props.selectArr.filter((option) => {
     if (option.value === 'null') {
       return true;
     }
-    console.log(option.value < boundries.max);
-    return option.value > boundries.min;
+    return option.value > boundries.min && option.value < boundries.max;
   });
-
-  console.log(selectOptions);
 
   return (
     <div className={classes.subSearch_section}>
