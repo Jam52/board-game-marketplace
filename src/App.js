@@ -4,6 +4,7 @@ import GameCardList from './Components/GameCardList/GameCardList';
 import { BrowserRouter } from 'react-router-dom';
 import axios from './axios';
 import Spinner from './Components/Spinner/Spinner';
+import MainGameFilter from './Components/MainGameFilter/MainGameFilter';
 
 class App extends Component {
   state = {
@@ -48,12 +49,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className={classes.App}>
-          <select
-            className={classes.dropdown}
-            onChange={(event) => this.categoryChangeHandler(event)}
-          >
-            {categories}
-          </select>
+          <MainGameFilter />
           {gameCards}
         </div>
       </BrowserRouter>
