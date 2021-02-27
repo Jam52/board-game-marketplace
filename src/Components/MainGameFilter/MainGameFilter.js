@@ -52,17 +52,26 @@ class MainGameFilter extends Component {
 
   componentDidUpdate = async (prevProps, prevState) => {
     if (
-      (prevState.selectedLabels.length !== this.state.selectedLabels.length ||
-        prevState.selectedSubLables !== this.state.selectedSubLables ||
-        prevState.asc !== this.state.asc) &&
-      this.state.selectedLabels.length > 0
+      prevState.selectedLabels.length !== this.state.selectedLabels.length ||
+      prevState.selectedSubLables !== this.state.selectedSubLables ||
+      prevState.asc !== this.state.asc
     ) {
-      const searchQuery = searchQueryFromSelectedLabels(
-        this.state.selectedLabels,
-        this.state.selectedSubLables,
-        this.state.asc,
-      );
+      console.log(this.state.selectedLabels);
+      if (this.state.selectedLabels.length === 0) {
+        console.log('resetting');
+        this.setState({
+          playerCount: { min: 0, max: 200 },
+          playtime: { min: 0, max: 1000 },
+          asc: false,
+          gameDataLength: 0,
+        });
+      }
       if (this.state.selectedLabels.length !== 0) {
+        const searchQuery = searchQueryFromSelectedLabels(
+          this.state.selectedLabels,
+          this.state.selectedSubLables,
+          this.state.asc,
+        );
         try {
           this.setState({ loading: true });
           const gameData = await fetchGameData(searchQuery);
