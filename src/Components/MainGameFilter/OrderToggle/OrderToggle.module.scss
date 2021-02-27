@@ -1,0 +1,15 @@
+.toggle {
+  width: 2rem;
+  height: 1rem;
+  cursor: pointer;
+
+  img {
+    width: 2rem;
+    height: 1rem;
+    transition: 0.2s ease-in;
+  }
+}
+
+.asc {
+  transform: rotate(180deg);
+}

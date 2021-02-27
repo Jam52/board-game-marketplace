@@ -23,6 +23,7 @@ class MainGameFilter extends Component {
     status: false,
     selectedLabels: [],
     selectedSubLables: [],
+    asc: false,
     gameData: [],
     gameDataLength: 0,
     loading: false,
@@ -51,15 +52,26 @@ class MainGameFilter extends Component {
 
   componentDidUpdate = async (prevProps, prevState) => {
     if (
-      (prevState.selectedLabels.length !== this.state.selectedLabels.length ||
-        prevState.selectedSubLables !== this.state.selectedSubLables) &&
-      this.state.selectedLabels.length > 0
+      prevState.selectedLabels.length !== this.state.selectedLabels.length ||
+      prevState.selectedSubLables !== this.state.selectedSubLables ||
+      prevState.asc !== this.state.asc
     ) {
-      const searchQuery = searchQueryFromSelectedLabels(
-        this.state.selectedLabels,
-        this.state.selectedSubLables,
-      );
+      console.log(this.state.selectedLabels);
+      if (this.state.selectedLabels.length === 0) {
+        console.log('resetting');
+        this.setState({
+          playerCount: { min: 0, max: 200 },
+          playtime: { min: 0, max: 1000 },
+          asc: false,
+          gameDataLength: 0,
+        });
+      }
       if (this.state.selectedLabels.length !== 0) {
+        const searchQuery = searchQueryFromSelectedLabels(
+          this.state.selectedLabels,
+          this.state.selectedSubLables,
+          this.state.asc,
+        );
         try {
           this.setState({ loading: true });
           const gameData = await fetchGameData(searchQuery);
@@ -141,6 +153,10 @@ class MainGameFilter extends Component {
       (label) => label.name !== labelObj.name,
     );
     this.setState({ selectedLabels: filteredSelectedLabels });
+  };
+
+  toggleAscHandler = () => {
+    this.setState({ asc: !this.state.asc });
   };
 
   render() {
@@ -231,6 +247,8 @@ class MainGameFilter extends Component {
                 { value: 'max_playtime', label: 'playtime' },
               ]}
               selectHandler={this.selectSubLabelHandler}
+              toggleAsc={this.toggleAscHandler}
+              isAsc={this.state.asc}
             />
           </div>
           <div className={classes.labelContainer}>
