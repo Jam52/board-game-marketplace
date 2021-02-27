@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from '../MainGameFilter.module.scss';
+import OrderToggle from '../OrderToggle/OrderToggle';
 
 const SubLabelDropdown = (props) => {
   let selectOptions = props.selectArr;
@@ -19,19 +20,24 @@ const SubLabelDropdown = (props) => {
       <label className={classes.subSearch_label} htmlFor={props.for}>
         {props.for}
       </label>
-      <select
-        id={props.for}
-        data-testid={`${props.for}-dropdown`}
-        data-label={props.for}
-        className={classes.subSearch_dropdown}
-        onChange={(event) => props.selectHandler(event, props.for)}
-      >
-        {selectOptions.map((selectOption) => {
-          return (
-            <option value={selectOption.value}>{selectOption.label}</option>
-          );
-        })}
-      </select>
+      <div>
+        <select
+          id={props.for}
+          data-testid={`${props.for}-dropdown`}
+          data-label={props.for}
+          className={classes.subSearch_dropdown}
+          onChange={(event) => props.selectHandler(event, props.for)}
+        >
+          {selectOptions.map((selectOption) => {
+            return (
+              <option value={selectOption.value}>{selectOption.label}</option>
+            );
+          })}
+        </select>
+        {props.toggleAsc ? (
+          <OrderToggle click={props.toggleAsc} isAsc={props.isAsc} />
+        ) : null}
+      </div>
     </div>
   );
 };

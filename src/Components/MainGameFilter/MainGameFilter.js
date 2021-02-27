@@ -23,6 +23,7 @@ class MainGameFilter extends Component {
     status: false,
     selectedLabels: [],
     selectedSubLables: [],
+    asc: false,
     gameData: [],
     gameDataLength: 0,
     loading: false,
@@ -52,12 +53,14 @@ class MainGameFilter extends Component {
   componentDidUpdate = async (prevProps, prevState) => {
     if (
       (prevState.selectedLabels.length !== this.state.selectedLabels.length ||
-        prevState.selectedSubLables !== this.state.selectedSubLables) &&
+        prevState.selectedSubLables !== this.state.selectedSubLables ||
+        prevState.asc !== this.state.asc) &&
       this.state.selectedLabels.length > 0
     ) {
       const searchQuery = searchQueryFromSelectedLabels(
         this.state.selectedLabels,
         this.state.selectedSubLables,
+        this.state.asc,
       );
       if (this.state.selectedLabels.length !== 0) {
         try {
@@ -141,6 +144,10 @@ class MainGameFilter extends Component {
       (label) => label.name !== labelObj.name,
     );
     this.setState({ selectedLabels: filteredSelectedLabels });
+  };
+
+  toggleAscHandler = () => {
+    this.setState({ asc: !this.state.asc });
   };
 
   render() {
@@ -231,6 +238,8 @@ class MainGameFilter extends Component {
                 { value: 'max_playtime', label: 'playtime' },
               ]}
               selectHandler={this.selectSubLabelHandler}
+              toggleAsc={this.toggleAscHandler}
+              isAsc={this.state.asc}
             />
           </div>
           <div className={classes.labelContainer}>
