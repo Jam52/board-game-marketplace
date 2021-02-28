@@ -18,23 +18,24 @@ const CategoryDropdown = (props) => {
     return false;
   };
 
-  //apply filter and map selectArry to options
-  categoryOptions = props.selectArray
-    .filter((category) => {
-      return filterSet(category, props.filteredCategories);
-    })
-    .map((category, index) => {
-      return (
-        <option
-          key={index}
-          value={category.name}
-          data-id={category.id}
-          data-testid={category.id}
-        >
-          {category.name}
-        </option>
-      );
-    });
+  if (props.status === 'done') {
+    categoryOptions = props.selectArray
+      .filter((category) => {
+        return filterSet(category, props.filteredCategories);
+      })
+      .map((category, index) => {
+        return (
+          <option
+            key={index}
+            value={category.name}
+            data-id={category.id}
+            data-testid={category.id}
+          >
+            {category.name}
+          </option>
+        );
+      });
+  }
 
   return (
     <div className={classes.mainSearch_section}>

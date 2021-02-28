@@ -1,0 +1,751 @@
+{
+  "games": [
+    {
+      "id": "PKcSCpkXyE",
+      "name": "Gloomhaven: Forgotten Circles Expansion",
+      "year_published": null,
+      "min_players": 1,
+      "max_players": 4,
+      "min_playtime": 60,
+      "max_playtime": 120,
+      "min_age": 12,
+      "description": "This is the first expansion for Gloomhaven featuring twenty new scenarios that take place after the events of the original Gloomhaven campaign which involve one new character class - the Aesther Diviner - and her attempts to prevent an approaching calamity. The accompanying scenario book breaks these scenarios up across multiple pages to create more dynamic and surprising encounters. The expansion also features seven new monster types (including three new bosses) and fourteen new items.",
+      "description_preview": "This is the first expansion for Gloomhaven featuring twenty new scenarios that take place after the events of the original Gloomhaven campaign which involve one new character class - the Aesther Diviner - and her attempts to prevent an approaching calamity. The accompanying scenario book breaks these scenarios up across multiple pages to create more dynamic and surprising encounters. The expansion also features seven new monster types (including three new bosses) and fourteen new items.",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1559254913417-51k2BgssGSyL.jpg",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254913417-51k2BgssGSyL.jpg"
+      },
+      "url": "https://www.boardgameatlas.com/game/PKcSCpkXyE/gloomhaven-forgotten-circles-expansion",
+      "price": "26.99",
+      "msrp": "30.00",
+      "discount": "0.10",
+      "primary_publisher": "Cephalofair Games",
+      "publishers": ["Cephalofair Games"],
+      "mechanics": [
+        {
+          "id": "xuphiSlrxI",
+          "url": "https://www.boardgameatlas.com/mechanic/xuphiSlrxI/undefined"
+        },
+        {
+          "id": "qu5BcGjAzk",
+          "url": "https://www.boardgameatlas.com/mechanic/qu5BcGjAzk/undefined"
+        },
+        {
+          "id": "WPytek5P8l",
+          "url": "https://www.boardgameatlas.com/mechanic/WPytek5P8l/undefined"
+        },
+        {
+          "id": "DwmsVEvNVd",
+          "url": "https://www.boardgameatlas.com/mechanic/DwmsVEvNVd/undefined"
+        },
+        {
+          "id": "U3zhCQH7Et",
+          "url": "https://www.boardgameatlas.com/mechanic/U3zhCQH7Et/undefined"
+        },
+        {
+          "id": "EVeAdboGUA",
+          "url": "https://www.boardgameatlas.com/mechanic/EVeAdboGUA/undefined"
+        },
+        {
+          "id": "DEvPj5twid",
+          "url": "https://www.boardgameatlas.com/mechanic/DEvPj5twid/undefined"
+        },
+        {
+          "id": "GUoWg3Mfh5",
+          "url": "https://www.boardgameatlas.com/mechanic/GUoWg3Mfh5/undefined"
+        },
+        {
+          "id": "XM2FYZmBHH",
+          "url": "https://www.boardgameatlas.com/mechanic/XM2FYZmBHH/undefined"
+        },
+        {
+          "id": "9mNukNBxfZ",
+          "url": "https://www.boardgameatlas.com/mechanic/9mNukNBxfZ/undefined"
+        }
+      ],
+      "categories": [
+        {
+          "id": "KUBCKBkGxV",
+          "url": "https://www.boardgameatlas.com/category/KUBCKBkGxV/undefined"
+        },
+        {
+          "id": "v4SfYtS2Lr",
+          "url": "https://www.boardgameatlas.com/category/v4SfYtS2Lr/undefined"
+        },
+        {
+          "id": "ZTneo8TaIO",
+          "url": "https://www.boardgameatlas.com/category/ZTneo8TaIO/undefined"
+        },
+        {
+          "id": "O0ogzwLUe8",
+          "url": "https://www.boardgameatlas.com/category/O0ogzwLUe8/undefined"
+        }
+      ],
+      "designers": [],
+      "developers": [],
+      "artists": [],
+      "names": [
+        "Gloomhaven: Forgotten Circles",
+        "Gloomhaven: Forgotten Circles Expansion (Deal of the Day)"
+      ],
+      "num_user_ratings": 6,
+      "average_user_rating": 4.833333333333333,
+      "official_url": null,
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 8,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 12.99,
+      "historical_low_date": "2020-05-25T04:04:34.682Z",
+      "rank": 9999999,
+      "trending_rank": 464
+    },
+    {
+      "id": "6nl57UNDFG",
+      "name": "Eclipse: Second Dawn for the Galaxy",
+      "year_published": 2018,
+      "min_players": 2,
+      "max_players": 6,
+      "min_playtime": 60,
+      "max_playtime": 200,
+      "min_age": 14,
+      "description": "<p>A game of <em><strong>Eclipse</strong></em> places you in control of a vast interstellar civilization, competing for success with its rivals. You explore new star systems, research technologies, and build spaceships with which to wage war. There are many potential paths to victory, so you need to plan your strategy according to the strengths and weaknesses of your species, while paying attention to the other civilizations' endeavors.</p>\r\n\r\n<p><em><strong>Eclipse: Second Dawn for the Galaxy</strong></em> is a revised and upgraded version of the <em>Eclipse</em> base game that debuted in 2011 that features:</p>\r\n\r\n<ul>\r\n    <li>New graphic design, while maintaining the acclaimed symbology of the first edition </li>\r\n    <li>An introductory short story by award-winning science fiction novelist Johanna Sinisalo, providing rich background for the world of <em>Eclipse</em></li>\r\n    <li> A full line of <em>Ship Pack 1</em> miniatures</li>\r\n    <li>New miniatures for ancients, GCDS, orbitals, and more</li>\r\n    <li>Custom plastic inlays</li>\r\n    <li>Custom combat dice</li>\r\n    <li>Fine-tuned gameplay</li>\r\n</ul>",
+      "description_preview": " A game of   Eclipse   places you in control of a vast interstellar civilization, competing for success with its rivals. You explore new star systems, research technologies, and build spaceships with which to wage war. There are many potential paths to victory, so you need to plan your strategy according to the strengths and weaknesses of your species, while paying attention to the other civilizations' endeavors. \r\n\r\n   Eclipse: Second Dawn for the Galaxy   is a revised and upgraded version of the  Eclipse  base game that debuted in 2011 that features: \r\n\r\n \r\n     New graphic design, while maintaining the acclaimed symbology of the first edition  \r\n     An introductory short story by award-winning science fiction novelist Johanna Sinisalo, providing rich background for the world of  Eclipse  \r\n      A full line of  Ship Pack 1  miniatures \r\n     New miniatures for ancients, GCDS, orbitals, and more \r\n     Custom plastic inlays \r\n     Custom combat dice \r\n     Fine-tuned gameplay \r\n ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1545094407985",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1545094407985",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1545094407985",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1545094407985",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1545094407985",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1545094407985",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1545094407985"
+      },
+      "url": "https://www.boardgameatlas.com/game/6nl57UNDFG/eclipse-second-dawn-for-the-galaxy",
+      "price": "0.00",
+      "msrp": "0.00",
+      "discount": "0.00",
+      "primary_publisher": "Lautapelit.fi",
+      "publishers": ["Lautapelit.fi"],
+      "mechanics": [
+        {
+          "id": "05zCZoLvQJ",
+          "url": "https://www.boardgameatlas.com/mechanic/05zCZoLvQJ/undefined"
+        },
+        {
+          "id": "R0bGq4cAl4",
+          "url": "https://www.boardgameatlas.com/mechanic/R0bGq4cAl4/undefined"
+        },
+        {
+          "id": "qu5BcGjAzk",
+          "url": "https://www.boardgameatlas.com/mechanic/qu5BcGjAzk/undefined"
+        },
+        {
+          "id": "U3zhCQH7Et",
+          "url": "https://www.boardgameatlas.com/mechanic/U3zhCQH7Et/undefined"
+        },
+        {
+          "id": "BGrhzIN69D",
+          "url": "https://www.boardgameatlas.com/mechanic/BGrhzIN69D/undefined"
+        },
+        {
+          "id": "8PN2HE86wg",
+          "url": "https://www.boardgameatlas.com/mechanic/8PN2HE86wg/undefined"
+        },
+        {
+          "id": "zzsE4jtI1b",
+          "url": "https://www.boardgameatlas.com/mechanic/zzsE4jtI1b/undefined"
+        },
+        {
+          "id": "XM2FYZmBHH",
+          "url": "https://www.boardgameatlas.com/mechanic/XM2FYZmBHH/undefined"
+        }
+      ],
+      "categories": [],
+      "designers": ["Touko Tahkokallio"],
+      "developers": [],
+      "artists": [
+        "Noah Adelman",
+        "Jere Kasanen",
+        "Jukka Rajaniemi",
+        "Sampo Sikiö"
+      ],
+      "names": ["Eclipse: 2nd Edition"],
+      "num_user_ratings": 6,
+      "average_user_rating": 4.666666666666666,
+      "official_url": null,
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 22,
+      "reddit_week_count": 1,
+      "reddit_day_count": 0,
+      "rank": 9999999,
+      "trending_rank": 695
+    },
+    {
+      "id": "Azp7oDacXD",
+      "name": "King of Tokyo: Dark Edition",
+      "year_published": 2020,
+      "min_players": 2,
+      "max_players": 6,
+      "min_playtime": 30,
+      "max_playtime": 30,
+      "min_age": 8,
+      "description": "The legendary King of Tokyo comes to your tabletop in a limited DARK EDITION, where you can discover the dark side of giant monsters clashing. The setting is more wicked than ever, and Tokyo is the prize!<br /><br />King of Tokyo: DARK EDITION features a new mechanic. This special collector's edition features beautiful new upgraded components worthy of a DARK EDITION of this best-selling game from the inimitable mind of Richard Garfield.<br /><br />Don't wait for this to disappear!<br /><br /><p>King of Tokyo: DARK EDITION will be a limited edition product with only ONE print run. This showcase piece for your board game collection features an embossed cover and upgraded contents with a carefully selected new varnish.her<br /></p>",
+      "description_preview": "The legendary King of Tokyo comes to your tabletop in a limited DARK EDITION, where you can discover the dark side of giant monsters clashing. The setting is more wicked than ever, and Tokyo is the prize!  King of Tokyo: DARK EDITION features a new mechanic. This special collector's edition features beautiful new upgraded components worthy of a DARK EDITION of this best-selling game from the inimitable mind of Richard Garfield.  Don't wait for this to disappear!   King of Tokyo: DARK EDITION will be a limited edition product with only ONE print run. This showcase piece for your board game collection features an embossed cover and upgraded contents with a carefully selected new varnish.her  ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596747346978",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596747346978",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1596747346978",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1596747346978",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1596747346978",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1596747346978",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596747346978"
+      },
+      "url": "https://www.boardgameatlas.com/game/Azp7oDacXD/king-of-tokyo-dark-edition",
+      "price": "32.00",
+      "msrp": "49.99",
+      "discount": "0.36",
+      "primary_publisher": "IELLO",
+      "publishers": ["IELLO", "Mancalamaro"],
+      "mechanics": [
+        {
+          "id": "iWODHwRGuU",
+          "url": "https://www.boardgameatlas.com/mechanic/iWODHwRGuU/undefined"
+        },
+        {
+          "id": "R0bGq4cAl4",
+          "url": "https://www.boardgameatlas.com/mechanic/R0bGq4cAl4/undefined"
+        },
+        {
+          "id": "BGrhzIN69D",
+          "url": "https://www.boardgameatlas.com/mechanic/BGrhzIN69D/undefined"
+        }
+      ],
+      "categories": [
+        {
+          "id": "mavSOM8vjH",
+          "url": "https://www.boardgameatlas.com/category/mavSOM8vjH/undefined"
+        },
+        {
+          "id": "upXZ8vNfNO",
+          "url": "https://www.boardgameatlas.com/category/upXZ8vNfNO/undefined"
+        },
+        {
+          "id": "Sod2YBWMKi",
+          "url": "https://www.boardgameatlas.com/category/Sod2YBWMKi/undefined"
+        }
+      ],
+      "designers": ["Richard Garfield"],
+      "developers": [],
+      "artists": ["Paul Mafayon"],
+      "names": [
+        "King of Tokyo: Dark Edition",
+        "IELLO King of Tokyo Dark Edition - Limited Edition"
+      ],
+      "num_user_ratings": 6,
+      "average_user_rating": 4.666666666666666,
+      "official_url": "https://iellousa.com/products/king-of-tokyo-dark-edition?utm_source=boardgameatlas.com&utm_medium=search&utm_campaign=bga_ads",
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 4,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 32,
+      "historical_low_date": "2020-10-21T00:53:07.958Z",
+      "rank": 9999999,
+      "trending_rank": 419
+    },
+    {
+      "id": "08asLSfoZy",
+      "name": "Gloomhaven: Jaws of the Lion",
+      "year_published": 2020,
+      "min_players": 1,
+      "max_players": 4,
+      "min_playtime": 30,
+      "max_playtime": 120,
+      "min_age": 14,
+      "description": "<p><strong>Gloomhaven: Jaws of the Lion</strong> is a standalone game that takes place before the events of Gloomhaven. The game includes four new characters — Valrath Red Guard (tank, crowd control), Inox Hatchet (ranged damage), Human Voidwarden (support, mind-control), and Quatryl Demolitionist (melee damage, obstacle manipulation) — that can also be used in the original Gloomhaven game.</p>\r\n<p>The game also includes 16 monster types (including seven new standard monsters and three new bosses) and a new campaign with 25 scenarios that invites the heroes to investigate a case of mysterious disappearances within the city. Is it the work of Vermlings, or is something far more sinister going on?</p>\r\n<p>Gloomhaven: Jaws of the Lion is aimed at a more casual audience to get people into the gameplay more quickly. All of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. The last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience.</p>",
+      "description_preview": "  Gloomhaven: Jaws of the Lion  is a standalone game that takes place before the events of Gloomhaven. The game includes four new characters — Valrath Red Guard (tank, crowd control), Inox Hatchet (ranged damage), Human Voidwarden (support, mind-control), and Quatryl Demolitionist (melee damage, obstacle manipulation) — that can also be used in the original Gloomhaven game. \r\n The game also includes 16 monster types (including seven new standard monsters and three new bosses) and a new campaign with 25 scenarios that invites the heroes to investigate a case of mysterious disappearances within the city. Is it the work of Vermlings, or is something far more sinister going on? \r\n Gloomhaven: Jaws of the Lion is aimed at a more casual audience to get people into the gameplay more quickly. All of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. The last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience. ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596502720802",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596502720802",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1596502720802",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1596502720802",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1596502720802",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1596502720802",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1596502720802"
+      },
+      "url": "https://www.boardgameatlas.com/game/08asLSfoZy/gloomhaven-jaws-of-the-lion",
+      "price": "37.49",
+      "msrp": "49.99",
+      "discount": "0.25",
+      "primary_publisher": null,
+      "publishers": ["Cephalofair Games"],
+      "mechanics": [
+        {
+          "id": "n1GtBt35Rd",
+          "url": "https://www.boardgameatlas.com/mechanic/n1GtBt35Rd/undefined"
+        },
+        {
+          "id": "PGjmKGi26h",
+          "url": "https://www.boardgameatlas.com/mechanic/PGjmKGi26h/undefined"
+        }
+      ],
+      "categories": [],
+      "designers": ["Isaac Childres"],
+      "developers": [],
+      "artists": ["Alexandr Elichev"],
+      "names": [
+        "Gloomhaven: Jaws of the Lion",
+        "Gloomhaven Jaws of The Lion",
+        "Gloomhaven: Jaws of the Lion (Minor Damage)"
+      ],
+      "num_user_ratings": 13,
+      "average_user_rating": 4.615384615384615,
+      "official_url": "http://www.cephalofair.com/2019/11/officially-announcing-gloomhaven-jaws-of-the-lion.html?utm_source=boardgameatlas.com&utm_medium=search&utm_campaign=bga_ads",
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 65,
+      "reddit_week_count": 5,
+      "reddit_day_count": 7,
+      "historical_low_price": 34.97,
+      "historical_low_date": "2020-10-13T18:04:19.062Z",
+      "rank": 9999999,
+      "trending_rank": 25
+    },
+    {
+      "id": "xetNswpgzl",
+      "name": "Concordia Venus",
+      "year_published": 2018,
+      "min_players": 2,
+      "max_players": 5,
+      "min_playtime": 90,
+      "max_playtime": 120,
+      "min_age": 13,
+      "description": "<p><strong>Concordia Venus</strong> is a standalone game that includes everything from the Venus expansion plus the additional maps: Imperium &amp; Cyprus, as well as all the components necessary to play the game as individual players and in teams of two.</p>",
+      "description_preview": "  Concordia Venus  is a standalone game that includes everything from the Venus expansion plus the additional maps: Imperium & Cyprus, as well as all the components necessary to play the game as individual players and in teams of two. ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1560988038324",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1560988038324",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1560988038324",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1560988038324",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1560988038324",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1560988038324",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1560988038324"
+      },
+      "url": "https://www.boardgameatlas.com/game/xetNswpgzl/concordia-venus-standalone",
+      "price": "64.95",
+      "msrp": "79.95",
+      "discount": "0.19",
+      "primary_publisher": "Rio Grande Games",
+      "publishers": ["PD-Verlag"],
+      "mechanics": [],
+      "categories": [],
+      "designers": ["Mac Gerdts"],
+      "developers": [],
+      "artists": [],
+      "names": ["Concordia Base Game Plus Venus"],
+      "num_user_ratings": 18,
+      "average_user_rating": 4.611111111111111,
+      "official_url": "http://riograndegames.com/Game/1336-Concordia-with-Venus-expansion?utm_source=boardgameatlas.com&utm_medium=search&utm_campaign=bga_ads",
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 16,
+      "reddit_week_count": 1,
+      "reddit_day_count": 0,
+      "historical_low_price": 28.99,
+      "historical_low_date": "2020-09-16T20:32:53.535Z",
+      "rank": 9999999,
+      "trending_rank": 261
+    },
+    {
+      "id": "NHwyTtPl00",
+      "name": "Aeon's End: The New Age",
+      "year_published": 2019,
+      "min_players": 1,
+      "max_players": 4,
+      "min_playtime": 60,
+      "max_playtime": 60,
+      "min_age": 14,
+      "description": "<p><em><strong>Aeon&rsquo;s End: The New Age</strong></em> introduces the Expedition system into the <em>Aeon's End</em> universe which allows players to replay all of the content they own in a short campaign format. After each game, players will receive new treasures and player cards that allow them to become more powerful. However, the nemeses that players will face grow stronger and stronger with each battle.</p>\n\n<p><em><strong>Aeon's End: The New Age</strong></em> is a standalone expansion that is compatible with all of the other standalone games. All content can be mixed and matched for exciting new combinations!</p>\n\n<p><em>&mdash;description from the publisher</em></p>\n\n",
+      "description_preview": "   Aeon&rsquo;s End: The New Age   introduces the Expedition system into the  Aeon's End  universe which allows players to replay all of the content they own in a short campaign format. After each game, players will receive new treasures and player cards that allow them to become more powerful. However, the nemeses that players will face grow stronger and stronger with each battle. \n\n   Aeon's End: The New Age   is a standalone expansion that is compatible with all of the other standalone games. All content can be mixed and matched for exciting new combinations! \n\n  &mdash;description from the publisher  \n\n",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1586178013961",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1586178013961",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1586178013961",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1586178013961",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1586178013961",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1586178013961",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1586178013961"
+      },
+      "url": "https://www.boardgameatlas.com/game/NHwyTtPl00/aeons-end-the-new-age",
+      "price": "41.97",
+      "msrp": "0.00",
+      "discount": "0.00",
+      "publishers": [
+        "Action Phase Games",
+        "Indie Boards & Cards",
+        "Indie Game Studios"
+      ],
+      "mechanics": [
+        {
+          "id": "iWODHwRGuU",
+          "url": "https://www.boardgameatlas.com/mechanic/iWODHwRGuU/undefined"
+        },
+        {
+          "id": "9mNukNBxfZ",
+          "url": "https://www.boardgameatlas.com/mechanic/9mNukNBxfZ/undefined"
+        },
+        {
+          "id": "WPytek5P8l",
+          "url": "https://www.boardgameatlas.com/mechanic/WPytek5P8l/undefined"
+        },
+        {
+          "id": "zzsE4jtI1b",
+          "url": "https://www.boardgameatlas.com/mechanic/zzsE4jtI1b/undefined"
+        },
+        {
+          "id": "XM2FYZmBHH",
+          "url": "https://www.boardgameatlas.com/mechanic/XM2FYZmBHH/undefined"
+        }
+      ],
+      "categories": [],
+      "designers": ["Kevin Riley"],
+      "developers": [],
+      "artists": ["Gong Studios"],
+      "names": [
+        "Aeons End: The New Age (Preorder)",
+        "Aeon's End: The New Age",
+        "Aeons End The New Age"
+      ],
+      "num_user_ratings": 8,
+      "average_user_rating": 4.5,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 51,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 31.99,
+      "historical_low_date": "2019-10-21T12:41:38.795Z",
+      "rank": 9999999,
+      "trending_rank": 1347
+    },
+    {
+      "id": "13CQ6UPMFp",
+      "name": "Clash of Cultures: Civilizations",
+      "year_published": 2014,
+      "min_players": 2,
+      "max_players": 4,
+      "min_playtime": 180,
+      "max_playtime": 240,
+      "min_age": 12,
+      "description": "Expand your civilization's influence with this expansion for Clash of Cultures! Discover 14 historical civilizations, each with 4 unique advances and 3 unique leaders.",
+      "description_preview": "Expand your civilization's influence with this expansion for Clash of Cultures! Discover 14 historical civilizations, each with 4 unique advances and 3 unique leaders.",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1559254734910-510NlvK6KSL.jpg",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254734910-510NlvK6KSL.jpg"
+      },
+      "url": "https://www.boardgameatlas.com/game/13CQ6UPMFp/clash-of-cultures-civilizations-board-game",
+      "price": "0.00",
+      "msrp": "0.00",
+      "discount": "0.00",
+      "primary_publisher": "Z-Man Games, Inc.",
+      "publishers": ["Z-Man Games, Inc."],
+      "mechanics": [],
+      "categories": [],
+      "designers": ["Christian Marcussen"],
+      "developers": [],
+      "artists": ["Chris Quilliams"],
+      "names": [],
+      "num_user_ratings": 7,
+      "average_user_rating": 4.5,
+      "official_url": null,
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 3,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "rank": 9999999,
+      "trending_rank": 0
+    },
+    {
+      "id": "cdEvEFSbPx",
+      "name": "Suburbia: Collector's Edition",
+      "year_published": 2019,
+      "min_players": 1,
+      "max_players": 5,
+      "min_playtime": 90,
+      "max_playtime": 90,
+      "min_age": 8,
+      "description": "<p><em><strong>Suburbia Collector’s Edition</strong></em> is a revamped version of the classic game <em>Suburbia</em> by Bezier Games. <em>Suburbia</em> fans old and new will fall in love with the updated three dimensional artwork, city-specific recessed borough boards, oversized tiles, and giant tile tower. This beautiful collectors edition features several amazing Game Trayz organizers and includes all existing expansions as well as a brand new one: Nightlife, which has buildings and locations that are more active in the evening hours.</p>\r\n\r\n<p>This strategic tile-laying game has players use hex-shaped building tiles to create their own unique city. These tiles include residential, commercial, civic, and industrial areas, as well as special points of interest that provide benefits and take advantage of the resources of nearby places. Your goal is to have your city thrive and end up with the greatest population.</p>\r\n\r\n<p>Each player builds up their own economic engine and infrastructure that will be initially self-sufficient, and eventually become both profitable and increase your population. As your city grows, you'll increase both your income (giving you more cash to spend) and your reputation (growing your population). The winner is the player with the largest population.</p>\r\n\r\n<p>During each game, players compete for unique goals that offer additional population boosts - and with the many varying buildings and properties, you’ll never play the same game twice!</p>",
+      "description_preview": "   Suburbia Collector’s Edition   is a revamped version of the classic game  Suburbia  by Bezier Games.  Suburbia  fans old and new will fall in love with the updated three dimensional artwork, city-specific recessed borough boards, oversized tiles, and giant tile tower. This beautiful collectors edition features several amazing Game Trayz organizers and includes all existing expansions as well as a brand new one: Nightlife, which has buildings and locations that are more active in the evening hours. \r\n\r\n This strategic tile-laying game has players use hex-shaped building tiles to create their own unique city. These tiles include residential, commercial, civic, and industrial areas, as well as special points of interest that provide benefits and take advantage of the resources of nearby places. Your goal is to have your city thrive and end up with the greatest population. \r\n\r\n Each player builds up their own economic engine and infrastructure that will be initially self-sufficient, and eventually become both profitable and increase your population. As your city grows, you'll increase both your income (giving you more cash to spend) and your reputation (growing your population). The winner is the player with the largest population. \r\n\r\n During each game, players compete for unique goals that offer additional population boosts - and with the many varying buildings and properties, you’ll never play the same game twice! ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1548977287060",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1548977287060",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1548977287060",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1548977287060",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1548977287060",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1548977287060",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1548977287060"
+      },
+      "url": "https://www.boardgameatlas.com/game/cdEvEFSbPx/suburbia-collectors-edition",
+      "price": "104.99",
+      "msrp": "0.00",
+      "discount": "0.00",
+      "primary_publisher": "Bézier Games",
+      "publishers": ["Bézier Games"],
+      "mechanics": [
+        {
+          "id": "BeD8NYAaSU",
+          "url": "https://www.boardgameatlas.com/mechanic/BeD8NYAaSU/undefined"
+        },
+        {
+          "id": "wPcKOr57ig",
+          "url": "https://www.boardgameatlas.com/mechanic/wPcKOr57ig/undefined"
+        },
+        {
+          "id": "U3zhCQH7Et",
+          "url": "https://www.boardgameatlas.com/mechanic/U3zhCQH7Et/undefined"
+        },
+        {
+          "id": "lA3KUtVFCy",
+          "url": "https://www.boardgameatlas.com/mechanic/lA3KUtVFCy/undefined"
+        },
+        {
+          "id": "u9IJEE1QBN",
+          "url": "https://www.boardgameatlas.com/mechanic/u9IJEE1QBN/undefined"
+        },
+        {
+          "id": "8PN2HE86wg",
+          "url": "https://www.boardgameatlas.com/mechanic/8PN2HE86wg/undefined"
+        }
+      ],
+      "categories": [
+        {
+          "id": "ODWOjWAJj3",
+          "url": "https://www.boardgameatlas.com/category/ODWOjWAJj3/undefined"
+        },
+        {
+          "id": "N0TkEGfEsF",
+          "url": "https://www.boardgameatlas.com/category/N0TkEGfEsF/undefined"
+        }
+      ],
+      "designers": ["Ted Alspach"],
+      "developers": [],
+      "artists": ["Stephanie Gustafsson", "Brett Stebbins", "Ollin Timm"],
+      "names": ["Suburbia: Collector's Edition"],
+      "num_user_ratings": 15,
+      "average_user_rating": 4.466666666666666,
+      "official_url": "https://beziergames.com/collections/hot-items/products/suburbia-collectors-edition?utm_source=boardgameatlas.com&utm_medium=search&utm_campaign=bga_ads",
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 11,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 94.49,
+      "historical_low_date": "2020-03-03T10:03:20.619Z",
+      "rank": 9999999,
+      "trending_rank": 389
+    },
+    {
+      "id": "WkCC416iZL",
+      "name": "Clank! Legacy: Acquisitions Incorporated",
+      "year_published": 2019,
+      "min_players": 2,
+      "max_players": 4,
+      "min_playtime": 90,
+      "max_playtime": 120,
+      "min_age": 13,
+      "description": "<p><em><strong>Clank! Legacy: Acquisitions Incorporated</strong></em> extends the deck-building fun of <em>Clank!</em> with legacy-style gameplay! Found your own franchise of the legendary adventuring company Acquisitions Incorporated, and shepherd your fledgling treasure-hunters to immortal corporate glory over the course of multiple games. Your game board, your deck, and your world change as you play to create a unique campaign tailored to your adventuring party. Be cunning, be bold, and most importantly be ready...</p>",
+      "description_preview": "   Clank! Legacy: Acquisitions Incorporated   extends the deck-building fun of  Clank!  with legacy-style gameplay! Found your own franchise of the legendary adventuring company Acquisitions Incorporated, and shepherd your fledgling treasure-hunters to immortal corporate glory over the course of multiple games. Your game board, your deck, and your world change as you play to create a unique campaign tailored to your adventuring party. Be cunning, be bold, and most importantly be ready... ",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1588093419012",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1588093419012",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1588093419012",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1588093419012",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1588093419012",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1588093419012",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1588093419012"
+      },
+      "url": "https://www.boardgameatlas.com/game/WkCC416iZL/clank-legacy-acquisitions-incorporated",
+      "price": "72.50",
+      "msrp": "0.00",
+      "discount": "0.00",
+      "primary_publisher": "Renegade Game Studios",
+      "publishers": [
+        "Renegade Game Studios",
+        "Dire Wolf Digital",
+        "Penny Arcade"
+      ],
+      "mechanics": [
+        {
+          "id": "iWODHwRGuU",
+          "url": "https://www.boardgameatlas.com/mechanic/iWODHwRGuU/undefined"
+        },
+        {
+          "id": "vZsDDAdOoe",
+          "url": "https://www.boardgameatlas.com/mechanic/vZsDDAdOoe/undefined"
+        },
+        {
+          "id": "DwmsVEvNVd",
+          "url": "https://www.boardgameatlas.com/mechanic/DwmsVEvNVd/undefined"
+        },
+        {
+          "id": "MEAoOygZsA",
+          "url": "https://www.boardgameatlas.com/mechanic/MEAoOygZsA/undefined"
+        },
+        {
+          "id": "hmipYN1R1I",
+          "url": "https://www.boardgameatlas.com/mechanic/hmipYN1R1I/undefined"
+        }
+      ],
+      "categories": [
+        {
+          "id": "XeYUw9159M",
+          "url": "https://www.boardgameatlas.com/category/XeYUw9159M/undefined"
+        }
+      ],
+      "designers": ["Paul Dennen"],
+      "developers": [],
+      "artists": [
+        "Clay Brooks",
+        "Anika Burrell",
+        "Derek Herring",
+        "Raul Ramos",
+        "Nate Storm",
+        "Alain Viesca"
+      ],
+      "names": ["Clank! Legacy: Acquisitions Incorporated"],
+      "num_user_ratings": 15,
+      "average_user_rating": 4.466666666666666,
+      "official_url": "http://www.clankacqinc.com?utm_source=boardgameatlas.com&utm_medium=search&utm_campaign=bga_ads",
+      "rules_url": null,
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 18,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 64.79,
+      "historical_low_date": "2019-11-09T10:02:21.360Z",
+      "rank": 9999999,
+      "trending_rank": 66
+    },
+    {
+      "id": "uDrK5MabTm",
+      "name": "A Feast For Odin: The Norwegians Expansion",
+      "year_published": 2018,
+      "min_players": 1,
+      "max_players": 4,
+      "min_playtime": 30,
+      "max_playtime": 120,
+      "min_age": 12,
+      "description": "In the realms of crafting, trade, discover, and battle, you have already proven yourself a worthy chieftain. Now its time to broaden your horizons, to explore and tame new lands, and to bring further wealth and glory to your tribe. The Norwegians expansion continues the epic saga of the critically-acclaimed A Feast for Odin, providing a host of new lands to discover, more wares, more animals, new challenges, and a multitude of new actions to perform.",
+      "description_preview": "In the realms of crafting, trade, discover, and battle, you have already proven yourself a worthy chieftain. Now its time to broaden your horizons, to explore and tame new lands, and to bring further wealth and glory to your tribe. The Norwegians expansion continues the epic saga of the critically-acclaimed A Feast for Odin, providing a host of new lands to discover, more wares, more animals, new challenges, and a multitude of new actions to perform.",
+      "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1578022063455",
+      "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1578022063455",
+      "images": {
+        "thumb": "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1578022063455",
+        "small": "https://d2k4q26owzy373.cloudfront.net/150x150/games/uploaded/1578022063455",
+        "medium": "https://d2k4q26owzy373.cloudfront.net/350x350/games/uploaded/1578022063455",
+        "large": "https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1578022063455",
+        "original": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1578022063455"
+      },
+      "url": "https://www.boardgameatlas.com/game/uDrK5MabTm/a-feast-for-odin-the-norwegians-expansion",
+      "price": "31.99",
+      "msrp": "33.99",
+      "discount": "0.06",
+      "primary_publisher": "Z-Man Games",
+      "publishers": ["Z-Man Games, Inc."],
+      "mechanics": [
+        {
+          "id": "9YdRn9J9oZ",
+          "url": "https://www.boardgameatlas.com/mechanic/9YdRn9J9oZ/undefined"
+        },
+        {
+          "id": "cznlFNKPA0",
+          "url": "https://www.boardgameatlas.com/mechanic/cznlFNKPA0/undefined"
+        },
+        {
+          "id": "8PN2HE86wg",
+          "url": "https://www.boardgameatlas.com/mechanic/8PN2HE86wg/undefined"
+        },
+        {
+          "id": "fBOTEBUAmV",
+          "url": "https://www.boardgameatlas.com/mechanic/fBOTEBUAmV/undefined"
+        }
+      ],
+      "categories": [
+        {
+          "id": "N0TkEGfEsF",
+          "url": "https://www.boardgameatlas.com/category/N0TkEGfEsF/undefined"
+        },
+        {
+          "id": "v4SfYtS2Lr",
+          "url": "https://www.boardgameatlas.com/category/v4SfYtS2Lr/undefined"
+        },
+        {
+          "id": "Wr8uXcoR9p",
+          "url": "https://www.boardgameatlas.com/category/Wr8uXcoR9p/undefined"
+        },
+        {
+          "id": "zqFmdU4Fp2",
+          "url": "https://www.boardgameatlas.com/category/zqFmdU4Fp2/undefined"
+        },
+        {
+          "id": "QAYkTHK1Dd",
+          "url": "https://www.boardgameatlas.com/category/QAYkTHK1Dd/undefined"
+        },
+        {
+          "id": "9EIayX6n5a",
+          "url": "https://www.boardgameatlas.com/category/9EIayX6n5a/undefined"
+        },
+        {
+          "id": "WVMOS3s2pb",
+          "url": "https://www.boardgameatlas.com/category/WVMOS3s2pb/undefined"
+        }
+      ],
+      "designers": ["Gernot Kopke", "Uwe Rosenberg"],
+      "developers": [],
+      "artists": ["Dennis Lohausen"],
+      "names": [
+        "A Feast For Odin: The Norwegians",
+        "Ein Fest für Odin: Die Norweger",
+        "La festa per Odino: i Norvegesi",
+        "A la gloire d' Odin: Les Norvégiens",
+        "奧丁的盛宴：挪威傳奇 A Feast for Odin: The Norwegians",
+        "오딘을 위하여: 노르웨이 사람들"
+      ],
+      "num_user_ratings": 13,
+      "average_user_rating": 4.461538461538462,
+      "official_url": null,
+      "rules_url": "https://images.zmangames.com/filer_public/b4/26/b4269cc5-1d85-4dc7-8a87-eca0a29029f5/zm7692_rulebook.pdf",
+      "matches_specs": null,
+      "spec": [],
+      "reddit_all_time_count": 16,
+      "reddit_week_count": 0,
+      "reddit_day_count": 0,
+      "historical_low_price": 31.98,
+      "historical_low_date": "2019-12-12T10:01:53.300Z",
+      "rank": 9999999,
+      "trending_rank": 229
+    }
+  ]
+}
