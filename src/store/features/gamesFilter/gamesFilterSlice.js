@@ -38,21 +38,19 @@ export const gamesFilterSlice = createSlice({
         max_playtime,
         mechanics,
         categories,
-        asc,
       } = action.payload;
 
-      state.asc = asc;
       state.filteredCategories = categories;
       state.filteredMechanics = mechanics;
       state.playerCount = { min: min_players, max: max_players };
       state.playtime = { min: min_playtime, max: max_playtime };
       state.gamesData = games;
     },
+    updateAsc: (state, action) => {
+      state.asc = action.payload;
+    },
     loading: (state, action) => {
       state.loading = action.payload;
-    },
-    setAsc: (state, action) => {
-      state.asc = action.payload;
     },
   },
 });
@@ -62,10 +60,25 @@ export const {
   setGamesData,
   setSelectedLabels,
   loading,
-  setAsc,
+  updateAsc,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
+
+//fetch games and update state helper function
+const fetchGamesAndSetDataInState = (query) => {
+  return async (dispatch) => {
+    try {
+      dispatch(loading(true));
+      const gameData = await fetchGameData(query);
+      dispatch(setGamesData(gameData.data));
+      dispatch(loading(false));
+    } catch (e) {
+      dispatch(loading(false));
+      console.log(e);
+    }
+  };
+};
 
 export const addSelectedLabel = (newLabel) => {
   return async (dispatch, getState) => {
@@ -77,19 +90,12 @@ export const addSelectedLabel = (newLabel) => {
     dispatch(setSelectedLabels(updatedSelectedLabels));
 
     //build search query, fetch data and setData in state
-    try {
-      dispatch(loading(true));
-      const query = searchQueryFromSelectedLabels(
-        updatedSelectedLabels,
-        currentState.asc,
-      );
-      const gameData = await fetchGameData(query);
-      dispatch(setGamesData(gameData.data));
-      dispatch(loading(false));
-    } catch (e) {
-      dispatch(loading(false));
-      console.log(e);
-    }
+    const query = searchQueryFromSelectedLabels(
+      updatedSelectedLabels,
+      currentState.asc,
+    );
+
+    dispatch(fetchGamesAndSetDataInState(query));
   };
 };
 
@@ -110,15 +116,7 @@ export const removeSelectedLabel = (newLabel) => {
         filteredLabels,
         currentState.asc,
       );
-      try {
-        dispatch(loading(true));
-        const gameData = await fetchGameData(query);
-        dispatch(setGamesData(gameData.data));
-        dispatch(loading(false));
-      } catch (e) {
-        dispatch(loading(false));
-        console.log(e);
-      }
+      dispatch(fetchGamesAndSetDataInState(query));
     } else {
       dispatch(loading(false));
       dispatch(
@@ -130,10 +128,20 @@ export const removeSelectedLabel = (newLabel) => {
           max_playtime: 10000,
           mechanics: [],
           categories: [],
-          asc: false,
         }),
       );
+      dispatch(updateAsc(false));
     }
+  };
+};
+
+export const setAsc = (asc) => {
+  console.log('setAsc', asc);
+  return async (dispatch, getState) => {
+    const currentLabels = getState().gamesFilter.selectedLabels;
+    const query = searchQueryFromSelectedLabels(currentLabels, asc);
+    dispatch(updateAsc(asc));
+    dispatch(fetchGamesAndSetDataInState(query));
   };
 };
 
