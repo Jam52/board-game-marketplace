@@ -5,179 +5,44 @@ import {
   addSelectedLabel,
   removeSelectedLabel,
 } from '../../store/features/gamesFilter/gamesFilterSlice';
-import {
-  fetchDropdownOptions,
-  fetchGameData,
-} from '../../services/boardgameApi';
 import classes from './MainGameFilter.module.scss';
 import Label from './Label/Label';
-import { searchQueryFromSelectedLabels } from './helperFunction';
 import GameCardList from '../../Components/GameCardList/GameCardList';
-import Spinner from '../../Components/Spinner/Spinner';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SubLabelDropdown from './SubLabelDropdown/SubLabelDropdown';
-import { render } from 'react-dom';
 
 const MainGameFilter = (props) => {
   const dispatch = useDispatch();
-  const { selectedLabels, mechanicOptions, categoryOptions } = useSelector(
-    (state) => state.gamesFilter,
-  );
+  const {
+    asc,
+    gamesData,
+    selectedLabels,
+    mechanicOptions,
+    categoryOptions,
+    loading,
+  } = useSelector((state) => state.gamesFilter);
 
   const [state, setState] = useState({
     filteredCategories: [],
     filteredMechanics: [],
-    playerCount: { min: 0, max: 200 },
-    playtime: { min: 0, max: 1000 },
-    selectedLabels: [],
-    selectedSubLables: [],
-    asc: false,
-    gameData: [],
-    gameDataLength: 0,
-    loading: false,
   });
 
   useEffect(() => {
     dispatch(fetchCategoryMechanicOptions());
   }, [mechanicOptions, categoryOptions]);
 
-  // componentDidMount = async () => {
-  //   if (
-  //     this.state.categories.length === 0 ||
-  //     this.state.mechanics.length === 0
-  //   ) {
-  //     this.setState({
-  //       status: 'loading',
-  //     });
-  //     const responseData = await this.fetchDropdownOptions();
-  //     this.setState({
-  //       categories: await responseData.categories.map((item) => {
-  //         return { ...item, type: 'category' };
-  //       }),
-  //       mechanics: await responseData.mechanics.map((item) => {
-  //         return { ...item, type: 'mechanic' };
-  //       }),
-  //       status: 'done',
-  //     });
-  //   }
-  // };
-
-  // componentDidUpdate = async (prevProps, prevState) => {
-  //   if (
-  //     prevState.selectedLabels.length !== this.selectedLabels.length ||
-  //     prevState.selectedSubLables !== this.state.selectedSubLables ||
-  //     prevState.asc !== this.state.asc
-  //   ) {
-  //     console.log(this.selectedLabels);
-  //     if (this.selectedLabels.length === 0) {
-  //       console.log('resetting');
-  //       this.setState({
-  //         playerCount: { min: 0, max: 200 },
-  //         playtime: { min: 0, max: 1000 },
-  //         asc: false,
-  //         gameDataLength: 0,
-  //       });
-  //     }
-  //     if (this.selectedLabels.length !== 0) {
-  //       const searchQuery = searchQueryFromSelectedLabels(
-  //         this.state.selectedLabels,
-  //         this.state.selectedSubLables,
-  //         this.state.asc,
-  //       );
-  //       try {
-  //         this.setState({ loading: true });
-  //         const gameData = await fetchGameData(searchQuery);
-  //         console.log(gameData.data);
-  //         this.setState({
-  //           gameData: gameData.data.games,
-  //           loading: false,
-  //           gameDataLength: gameData.data.length,
-  //           filteredMechanics: gameData.data.mechanics,
-  //           filteredCategories: gameData.data.categories,
-  //           playerCount: {
-  //             min: gameData.data.min_players,
-  //             max: gameData.data.max_players,
-  //           },
-  //           playtime: {
-  //             min: gameData.data.min_playtime,
-  //             max: gameData.data.max_playtime,
-  //           },
-  //         });
-  //         console.log(this.state.selectedLabels);
-  //       } catch (e) {
-  //         console.log(e);
-  //       }
-  //     }
-  //   }
-  // };
-
-  // selectMainLabelHandler = (event, categories) => {
-  //   const targetValue = event.target.value;
-  //   if (targetValue !== 'null') {
-  //     const labelObject = categories.find(
-  //       (cat) => cat.name.toLowerCase() === targetValue.toLowerCase(),
-  //     );
-  //     this.addLabelObjToSelectedLabels(labelObject);
-  //     event.target.children[0].selected = true;
-  //   }
-  // };
-
-  // selectSubLabelHandler = (event, category) => {
-  //   const value = event.target.value;
-  //   console.log(value, category);
-  //   let newState = this.state.selectedSubLables.filter(
-  //     (label) => label.type !== category,
-  //   );
-  //   if (value !== 'null') {
-  //     const labelObj = {
-  //       id: value,
-  //       type: category,
-  //     };
-  //     newState = [...newState, labelObj];
-  //   }
-  //   this.setState({ selectedSubLables: newState });
-  // };
-
-  // addLabelObjToSelectedLabels = async (labelObj) => {
-  //   if (
-  //     this.state.selectedLabels.map((obj) => obj.name).includes(labelObj.name)
-  //   ) {
-  //     return;
-  //   }
-  //   this.setState({
-  //     selectedLabels: [...this.state.selectedLabels, labelObj],
-  //   });
-  // };
-
-  // removeLabelHandler = (labelObj) => {
-  //   const filteredSelectedLabels = this.state.selectedLabels.filter(
-  //     (label) => label.name !== labelObj.name,
-  //   );
-  //   this.setState({ selectedLabels: filteredSelectedLabels });
-  // };
-
-  // toggleAscHandler = () => {
-  //   this.setState({ asc: !this.state.asc });
-  // };
-
-  // let gameCards = null;
-  // if (this.state.selectedLabels.length > 0) {
-  //   if (this.state.loading) {
-  //     gameCards = <Spinner />;
-  //   } else if (this.state.gameData.length > 0) {
-  //     gameCards = <GameCardList games={this.state.gameData} />;
-  //   }
-  // }
-
-  // render() {
-
-  const selectMainLabelHandler = (event, categories) => {
+  const selectMainLabelHandler = (event, categories, type) => {
     const targetValue = event.target.value;
     if (targetValue !== 'null') {
       const labelObject = categories.find(
         (cat) => cat.name.toLowerCase() === targetValue.toLowerCase(),
       );
-      dispatch(addSelectedLabel(labelObject));
+      const newLabelObj = {
+        type: type,
+        id: labelObject.id,
+        name: labelObject.name,
+      };
+      dispatch(addSelectedLabel(newLabelObj));
       event.target.children[0].selected = true;
     }
   };
@@ -190,14 +55,14 @@ const MainGameFilter = (props) => {
             for="category"
             filteredCategories={state.filteredCategories}
             selectArray={categoryOptions}
-            selectedLabels={[]}
+            selectedLabels={selectedLabels}
             onChangeHandler={selectMainLabelHandler}
           />
           <CategoryDropdown
             for="mechanic"
             filteredCategories={state.filteredMechanics}
             selectArray={mechanicOptions}
-            selectedLabels={[]}
+            selectedLabels={selectedLabels}
             onChangeHandler={selectMainLabelHandler}
           />
         </div>
@@ -262,7 +127,6 @@ const MainGameFilter = (props) => {
         <div className={classes.labelContainer}>
           {selectedLabels.length > 0
             ? selectedLabels.map((obj, index) => {
-                console.log(selectedLabels);
                 return (
                   <Label
                     key={index}
@@ -274,6 +138,7 @@ const MainGameFilter = (props) => {
             : null}
         </div>
       </form>
+      <GameCardList games={gamesData} loading={loading}></GameCardList>
     </div>
   );
 };

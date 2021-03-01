@@ -46,7 +46,9 @@ const CategoryDropdown = (props) => {
         id={props.for}
         name={props.for}
         className={classes.mainSearch_dropdown}
-        onChange={(event) => props.onChangeHandler(event, props.selectArray)}
+        onChange={(event) =>
+          props.onChangeHandler(event, props.selectArray, props.for)
+        }
       >
         <option value="null">{props.for}</option>
         {categoryOptions}
