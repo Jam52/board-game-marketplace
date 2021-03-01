@@ -12,7 +12,11 @@ export const gamesFilterSlice = createSlice({
     selectedSubLabels: [],
     asc: false,
     gamesData: [],
+    playtime: { min: 0, max: 1000 },
     loading: false,
+    playerCount: { min: 1, max: 1000 },
+    filteredCategories: [],
+    filteredMechanics: [],
   },
   reducers: {
     setSelectedLabels: (state, action) => {
@@ -25,10 +29,30 @@ export const gamesFilterSlice = createSlice({
       }
     },
     setGamesData: (state, action) => {
-      state.gamesData = action.payload.games;
+      console.log(action.payload);
+      const {
+        min_players,
+        max_players,
+        games,
+        min_playtime,
+        max_playtime,
+        mechanics,
+        categories,
+        asc,
+      } = action.payload;
+
+      state.asc = asc;
+      state.filteredCategories = categories;
+      state.filteredMechanics = mechanics;
+      state.playerCount = { min: min_players, max: max_players };
+      state.playtime = { min: min_playtime, max: max_playtime };
+      state.gamesData = games;
     },
     loading: (state, action) => {
       state.loading = action.payload;
+    },
+    setAsc: (state, action) => {
+      state.asc = action.payload;
     },
   },
 });
@@ -38,6 +62,7 @@ export const {
   setGamesData,
   setSelectedLabels,
   loading,
+  setAsc,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
@@ -95,7 +120,19 @@ export const removeSelectedLabel = (newLabel) => {
         console.log(e);
       }
     } else {
-      dispatch(setGamesData({ games: [] }));
+      dispatch(loading(false));
+      dispatch(
+        setGamesData({
+          min_players: 1,
+          max_players: 1000,
+          games: [],
+          min_playtime: 0,
+          max_playtime: 10000,
+          mechanics: [],
+          categories: [],
+          asc: false,
+        }),
+      );
     }
   };
 };

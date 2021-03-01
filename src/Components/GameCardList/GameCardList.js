@@ -11,16 +11,6 @@ const GameCardList = (props) => {
     });
   }
 
-  const content = props.loading ? (
-    <div className={classes.sinnerContainer}>
-      <Spinner />
-    </div>
-  ) : (
-    <div data-test="component-game-card-list" className={classes.container}>
-      {gameList}
-    </div>
-  );
-
   return (
     <div data-test="component-game-card-list">
       {props.loading ? (

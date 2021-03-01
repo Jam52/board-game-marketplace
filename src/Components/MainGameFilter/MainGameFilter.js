@@ -4,6 +4,7 @@ import {
   fetchCategoryMechanicOptions,
   addSelectedLabel,
   removeSelectedLabel,
+  setAsc,
 } from '../../store/features/gamesFilter/gamesFilterSlice';
 import classes from './MainGameFilter.module.scss';
 import Label from './Label/Label';
@@ -14,24 +15,23 @@ import SubLabelDropdown from './SubLabelDropdown/SubLabelDropdown';
 const MainGameFilter = (props) => {
   const dispatch = useDispatch();
   const {
-    asc,
     gamesData,
     selectedLabels,
     mechanicOptions,
     categoryOptions,
+    filteredCategories,
+    filteredMechanics,
+    playerCount,
+    playtime,
     loading,
+    asc,
   } = useSelector((state) => state.gamesFilter);
-
-  const [state, setState] = useState({
-    filteredCategories: [],
-    filteredMechanics: [],
-  });
 
   useEffect(() => {
     dispatch(fetchCategoryMechanicOptions());
   }, [mechanicOptions, categoryOptions]);
 
-  const selectMainLabelHandler = (event, categories, type) => {
+  const selectLabelHandler = (event, categories, type) => {
     const targetValue = event.target.value;
     if (targetValue !== 'null') {
       const labelObject = categories.find(
@@ -47,26 +47,39 @@ const MainGameFilter = (props) => {
     }
   };
 
+  const selectSubLabelHandler = (event, type) => {
+    const targetValue = event.target.value;
+    const labelObj = {
+      id: targetValue,
+      type,
+    };
+
+    dispatch(removeSelectedLabel(labelObj));
+    if (targetValue !== 'null') {
+      dispatch(addSelectedLabel(labelObj));
+    }
+  };
+
   return (
     <div>
       <form data-testid="component-main-game-filter" className={classes.form}>
         <div className={classes.mainSearch}>
           <CategoryDropdown
             for="category"
-            filteredCategories={state.filteredCategories}
+            filteredCategories={filteredCategories}
             selectArray={categoryOptions}
             selectedLabels={selectedLabels}
-            onChangeHandler={selectMainLabelHandler}
+            onChangeHandler={selectLabelHandler}
           />
           <CategoryDropdown
             for="mechanic"
-            filteredCategories={state.filteredMechanics}
+            filteredCategories={filteredMechanics}
             selectArray={mechanicOptions}
             selectedLabels={selectedLabels}
-            onChangeHandler={selectMainLabelHandler}
+            onChangeHandler={selectLabelHandler}
           />
         </div>
-        {/* <div className={classes.subSearch}>
+        <div className={classes.subSearch}>
           <SubLabelDropdown
             for="player count"
             selectArr={[
@@ -77,7 +90,7 @@ const MainGameFilter = (props) => {
               { value: '7', label: '7 Players' },
               { value: '10', label: '7+ Players' },
             ]}
-            selectBoundaries={state.playerCount}
+            selectBoundaries={playerCount}
             selectHandler={selectSubLabelHandler}
           />
 
@@ -92,8 +105,8 @@ const MainGameFilter = (props) => {
               { value: '120', label: '120 mins' },
               { value: '240', label: '240 mins' },
             ]}
-            selectBoundaries={this.state.playtime}
-            selectHandler={this.selectSubLabelHandler}
+            selectBoundaries={playtime}
+            selectHandler={selectSubLabelHandler}
           />
           <div className={classes.subSearch_section}>
             <label className={classes.subSearch_label} htmlFor="year published">
@@ -106,7 +119,7 @@ const MainGameFilter = (props) => {
               data-label="- year published"
               className={classes.subSearch_input}
               onChange={(event) =>
-                this.selectSubLabelHandler(event, 'year-published')
+                selectSubLabelHandler(event, 'year-published')
               }
             />
           </div>
@@ -119,22 +132,27 @@ const MainGameFilter = (props) => {
               { value: 'year_published', label: 'year published' },
               { value: 'max_playtime', label: 'playtime' },
             ]}
-            selectHandler={this.selectSubLabelHandler}
-            toggleAsc={this.toggleAscHandler}
-            isAsc={this.state.asc}
-          /> */}
-        {/* </div> */}
+            selectHandler={(event) => selectSubLabelHandler(event, 'order by')}
+            toggleAsc={() => dispatch(setAsc(!asc))}
+            isAsc={asc}
+          />
+        </div>
         <div className={classes.labelContainer}>
           {selectedLabels.length > 0
-            ? selectedLabels.map((obj, index) => {
-                return (
-                  <Label
-                    key={index}
-                    labelObj={obj}
-                    remove={() => dispatch(removeSelectedLabel(obj))}
-                  />
-                );
-              })
+            ? selectedLabels
+                .filter(
+                  (label) =>
+                    label.type === 'mechanic' || label.type === 'category',
+                )
+                .map((obj, index) => {
+                  return (
+                    <Label
+                      key={index}
+                      labelObj={obj}
+                      remove={() => dispatch(removeSelectedLabel(obj))}
+                    />
+                  );
+                })
             : null}
         </div>
       </form>
