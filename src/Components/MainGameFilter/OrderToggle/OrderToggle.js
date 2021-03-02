@@ -3,7 +3,12 @@ import classes from './OrderToggle.module.scss';
 
 const OrderToggle = (props) => {
   return (
-    <div className={classes.toggle} onClick={props.click} role="button">
+    <div
+      className={classes.toggle}
+      onClick={props.click}
+      role="button"
+      aria-label={props.isAsc ? 'Ascending' : 'Descending'}
+    >
       <img
         className={props.isAsc ? classes.asc : null}
         src={process.env.PUBLIC_URL + '/images/orderArrow.svg'}

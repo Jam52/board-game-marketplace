@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchDropdownOptions } from '../../../services/boardgameApi';
 import { searchQueryFromSelectedLabels } from './helperFunction';
 import { fetchGameData } from '../../../services/boardgameApi';
@@ -10,7 +10,7 @@ export const gamesFilterSlice = createSlice({
     mechanicOptions: [],
     selectedLabels: [],
     selectedSubLabels: [],
-    asc: false,
+    isAsc: false,
     gamesData: [],
     playtime: { min: 0, max: 1000 },
     loading: false,
@@ -45,8 +45,8 @@ export const gamesFilterSlice = createSlice({
       state.playtime = { min: min_playtime, max: max_playtime };
       state.gamesData = games;
     },
-    updateAsc: (state, action) => {
-      state.asc = action.payload;
+    setIsAsc: (state, action) => {
+      state.isAsc = action.payload;
     },
     loading: (state, action) => {
       state.loading = action.payload;
@@ -58,6 +58,7 @@ export const gamesFilterSlice = createSlice({
       state.playtime = { min: 1, max: 10000 };
       state.gamesData = [];
       state.loading = false;
+      state.isAsc = false;
     },
   },
 });
@@ -67,17 +68,17 @@ export const {
   setGamesData,
   setSelectedLabels,
   loading,
-  updateAsc,
+  setIsAsc,
   resetGameData,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
 
-//fetch games and update state helper function
+//fetch games and update state
 const fetchGamesAndSetDataInState = (query) => {
   return async (dispatch) => {
+    dispatch(loading(true));
     try {
-      dispatch(loading(true));
       const gameData = await fetchGameData(query);
       dispatch(setGamesData(gameData.data));
       dispatch(loading(false));
@@ -88,52 +89,47 @@ const fetchGamesAndSetDataInState = (query) => {
   };
 };
 
+// add selected label to state and dispatch action to fetch games and add to state
 export const addSelectedLabel = (newLabel) => {
   return async (dispatch, getState) => {
-    //get current state
     const currentState = getState().gamesFilter;
-    // add label to currentLabels
     const updatedSelectedLabels = [...currentState.selectedLabels, newLabel];
-    //set selectedLabels to newLabels
+
     dispatch(setSelectedLabels(updatedSelectedLabels));
 
-    //build search query, fetch data and setData in state
     const query = searchQueryFromSelectedLabels(
       updatedSelectedLabels,
-      currentState.asc,
+      currentState.isAsc,
     );
 
     dispatch(fetchGamesAndSetDataInState(query));
   };
 };
 
+//remove label from state, if there are labels in state fetch and set data, else reset game data in state
 export const removeSelectedLabel = (newLabel) => {
   return async (dispatch, getState) => {
-    //get current state
     const currentState = getState().gamesFilter;
-    //filter labels to remove selected label
+
     const filteredLabels = currentState.selectedLabels.filter(
       (label) => label.id != newLabel.id,
     );
-    console.log('remove', filteredLabels);
-    //set selectedLabels to filtredLabels
+
     dispatch(setSelectedLabels(filteredLabels));
 
-    //build search query, fetch data and setData in state if there are any selected labels
     if (filteredLabels.length > 0) {
       const query = searchQueryFromSelectedLabels(
         filteredLabels,
-        currentState.asc,
+        currentState.isAsc,
       );
       dispatch(fetchGamesAndSetDataInState(query));
     } else {
-      dispatch(loading(false));
       dispatch(resetGameData());
-      dispatch(updateAsc(false));
     }
   };
 };
 
+//add sublabel to state, removing previouse label if of same type, reset all game data if no labels in state
 export const addSubLabelToSelectedLabels = (newLabel) => {
   return async (dispatch, getState) => {
     const filteredLabels = getState().gamesFilter.selectedLabels.filter(
@@ -143,6 +139,7 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
       filteredLabels.push(newLabel);
     }
     dispatch(setSelectedLabels(filteredLabels));
+
     if (filteredLabels.length > 0) {
       const query = searchQueryFromSelectedLabels(filteredLabels);
       dispatch(fetchGamesAndSetDataInState(query));
@@ -152,21 +149,24 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
   };
 };
 
+//update Asc in state, fetch and set new game data
 export const setAsc = (asc) => {
   return async (dispatch, getState) => {
     const currentLabels = getState().gamesFilter.selectedLabels;
-    console.log(currentLabels);
-    const query = searchQueryFromSelectedLabels(currentLabels, asc);
-    dispatch(updateAsc(asc));
-    dispatch(fetchGamesAndSetDataInState(query));
+
+    if (currentLabels.length > 0) {
+      const query = searchQueryFromSelectedLabels(currentLabels, asc);
+      dispatch(setIsAsc(asc));
+      dispatch(fetchGamesAndSetDataInState(query));
+    }
   };
 };
 
+//fetch category and mechanic dropdown options from api and set in state
 export const fetchCategoryMechanicOptions = () => {
   return async (dispatch) => {
     try {
       const res = await fetchDropdownOptions();
-
       dispatch(setCategoryMechanicOptions(res));
     } catch (error) {
       console.log(error);

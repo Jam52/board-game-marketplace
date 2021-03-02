@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchCategoryMechanicOptions,
@@ -54,13 +54,13 @@ const MainGameFilter = (props) => {
       id: targetValue,
       type,
     };
-    console.log(labelObj);
     dispatch(addSubLabelToSelectedLabels(labelObj));
   };
 
   return (
     <div>
       <form data-testid="component-main-game-filter" className={classes.form}>
+        <legend>Filter games</legend>
         <div className={classes.mainSearch}>
           <CategoryDropdown
             for="category"
