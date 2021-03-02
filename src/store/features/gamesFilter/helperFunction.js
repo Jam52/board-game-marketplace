@@ -7,7 +7,7 @@ export const searchQueryFromSelectedLabels = (selectedLabels, asc) => {
   const playerCountQuery = returnIdFromLabel(selectedLabels, 'player count');
   let ascQuery = '';
 
-  if (orderByQuery.length !== 0) {
+  if (orderByQuery) {
     ascQuery = asc;
   }
   const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${orderByQuery}&asc=${ascQuery}&player_count=${playerCountQuery}`;

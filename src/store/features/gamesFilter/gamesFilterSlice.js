@@ -29,7 +29,6 @@ export const gamesFilterSlice = createSlice({
       }
     },
     setGamesData: (state, action) => {
-      console.log(action.payload);
       const {
         min_players,
         max_players,
@@ -105,8 +104,9 @@ export const removeSelectedLabel = (newLabel) => {
     const currentState = getState().gamesFilter;
     //filter labels to remove selected label
     const filteredLabels = currentState.selectedLabels.filter(
-      (label) => label.id !== newLabel.id,
+      (label) => label.id != newLabel.id,
     );
+    console.log('remove', filteredLabels, newLabel);
     //set selectedLabels to filtredLabels
     dispatch(setSelectedLabels(filteredLabels));
 
@@ -135,8 +135,20 @@ export const removeSelectedLabel = (newLabel) => {
   };
 };
 
+export const addSubLabelToSelectedLabels = (newLabel) => {
+  return async (dispatch, getState) => {
+    const filteredLabels = getState().gamesFilter.selectedLabels.filter(
+      (label) => label.type !== newLabel.type,
+    );
+    if (newLabel.id !== 'null') {
+      filteredLabels.push(newLabel);
+    }
+    const query = searchQueryFromSelectedLabels(filteredLabels);
+    dispatch(fetchGamesAndSetDataInState(query));
+  };
+};
+
 export const setAsc = (asc) => {
-  console.log('setAsc', asc);
   return async (dispatch, getState) => {
     const currentLabels = getState().gamesFilter.selectedLabels;
     const query = searchQueryFromSelectedLabels(currentLabels, asc);

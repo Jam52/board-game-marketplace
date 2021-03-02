@@ -5,6 +5,7 @@ import {
   addSelectedLabel,
   removeSelectedLabel,
   setAsc,
+  addSubLabelToSelectedLabels,
 } from '../../store/features/gamesFilter/gamesFilterSlice';
 import classes from './MainGameFilter.module.scss';
 import Label from './Label/Label';
@@ -53,11 +54,7 @@ const MainGameFilter = (props) => {
       id: targetValue,
       type,
     };
-
-    dispatch(removeSelectedLabel(labelObj));
-    if (targetValue !== 'null') {
-      dispatch(addSelectedLabel(labelObj));
-    }
+    dispatch(addSubLabelToSelectedLabels(labelObj));
   };
 
   return (
@@ -126,9 +123,8 @@ const MainGameFilter = (props) => {
           <SubLabelDropdown
             for="order by"
             selectArr={[
-              { value: 'null', label: 'order by' },
-              { value: 'name', label: 'name' },
               { value: 'average_user_rating', label: 'user raiting' },
+              { value: 'name', label: 'name' },
               { value: 'year_published', label: 'year published' },
               { value: 'max_playtime', label: 'playtime' },
             ]}

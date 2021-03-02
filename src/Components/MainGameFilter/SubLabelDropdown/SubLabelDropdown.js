@@ -3,7 +3,6 @@ import classes from '../MainGameFilter.module.scss';
 import OrderToggle from '../OrderToggle/OrderToggle';
 
 const SubLabelDropdown = (props) => {
-  console.log('subLable', props.isAsc);
   let selectOptions = props.selectArr;
 
   if (props.selectBoundaries) {
