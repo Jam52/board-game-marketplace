@@ -37,12 +37,14 @@ const CategoryDropdown = (props) => {
     });
 
   return (
-    <div className={classes.mainSearch_section}>
+    <div
+      className={classes.mainSearch_section}
+      data-testid={`${props.for}-dropdown`}
+    >
       <label className={classes.mainSearch_label} htmlFor={props.for}>
         Add a {props.for}
       </label>
       <select
-        data-testid={`${props.for}-dropdown`}
         id={props.for}
         name={props.for}
         className={classes.mainSearch_dropdown}
