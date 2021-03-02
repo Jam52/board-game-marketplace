@@ -57,6 +57,7 @@ export const gamesFilterSlice = createSlice({
       state.playerCount = { min: 1, max: 1000 };
       state.playtime = { min: 1, max: 10000 };
       state.gamesData = [];
+      state.loading = false;
     },
   },
 });
@@ -114,7 +115,7 @@ export const removeSelectedLabel = (newLabel) => {
     const filteredLabels = currentState.selectedLabels.filter(
       (label) => label.id != newLabel.id,
     );
-    console.log('remove', filteredLabels, newLabel);
+    console.log('remove', filteredLabels);
     //set selectedLabels to filtredLabels
     dispatch(setSelectedLabels(filteredLabels));
 
