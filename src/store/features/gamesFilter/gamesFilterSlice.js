@@ -51,6 +51,13 @@ export const gamesFilterSlice = createSlice({
     loading: (state, action) => {
       state.loading = action.payload;
     },
+    resetGameData: (state) => {
+      state.filteredCategories = [];
+      state.filteredMechanics = [];
+      state.playerCount = { min: 1, max: 1000 };
+      state.playtime = { min: 1, max: 10000 };
+      state.gamesData = [];
+    },
   },
 });
 
@@ -60,6 +67,7 @@ export const {
   setSelectedLabels,
   loading,
   updateAsc,
+  resetGameData,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
@@ -119,17 +127,7 @@ export const removeSelectedLabel = (newLabel) => {
       dispatch(fetchGamesAndSetDataInState(query));
     } else {
       dispatch(loading(false));
-      dispatch(
-        setGamesData({
-          min_players: 1,
-          max_players: 1000,
-          games: [],
-          min_playtime: 0,
-          max_playtime: 10000,
-          mechanics: [],
-          categories: [],
-        }),
-      );
+      dispatch(resetGameData());
       dispatch(updateAsc(false));
     }
   };
@@ -143,14 +141,20 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
     if (newLabel.id !== 'null') {
       filteredLabels.push(newLabel);
     }
-    const query = searchQueryFromSelectedLabels(filteredLabels);
-    dispatch(fetchGamesAndSetDataInState(query));
+    dispatch(setSelectedLabels(filteredLabels));
+    if (filteredLabels.length > 0) {
+      const query = searchQueryFromSelectedLabels(filteredLabels);
+      dispatch(fetchGamesAndSetDataInState(query));
+    } else {
+      dispatch(resetGameData());
+    }
   };
 };
 
 export const setAsc = (asc) => {
   return async (dispatch, getState) => {
     const currentLabels = getState().gamesFilter.selectedLabels;
+    console.log(currentLabels);
     const query = searchQueryFromSelectedLabels(currentLabels, asc);
     dispatch(updateAsc(asc));
     dispatch(fetchGamesAndSetDataInState(query));

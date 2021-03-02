@@ -54,6 +54,7 @@ const MainGameFilter = (props) => {
       id: targetValue,
       type,
     };
+    console.log(labelObj);
     dispatch(addSubLabelToSelectedLabels(labelObj));
   };
 
