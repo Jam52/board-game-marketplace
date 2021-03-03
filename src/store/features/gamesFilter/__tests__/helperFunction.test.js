@@ -28,12 +28,12 @@ const selectedLabels = [
   {
     id: 15,
     name: '15 minues',
-    type: 'play-time',
+    type: 'play time',
   },
   {
     id: 4,
     name: '4 players',
-    type: 'player-count',
+    type: 'player count',
   },
   {
     id: 2000,
@@ -43,7 +43,7 @@ const selectedLabels = [
   {
     id: 'popularity',
     name: 'popularity',
-    type: 'order-by',
+    type: 'order by',
   },
 ];
 

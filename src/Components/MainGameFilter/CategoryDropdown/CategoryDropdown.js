@@ -18,36 +18,39 @@ const CategoryDropdown = (props) => {
     return false;
   };
 
-  if (props.status === 'done') {
-    categoryOptions = props.selectArray
-      .filter((category) => {
-        return filterSet(category, props.filteredCategories);
-      })
-      .map((category, index) => {
-        return (
-          <option
-            key={index}
-            value={category.name}
-            data-id={category.id}
-            data-testid={category.id}
-          >
-            {category.name}
-          </option>
-        );
-      });
-  }
+  //apply filter and map selectArry to options
+  categoryOptions = props.selectArray
+    .filter((category) => {
+      return filterSet(category, props.filteredCategories);
+    })
+    .map((category, index) => {
+      return (
+        <option
+          key={index}
+          value={category.name}
+          data-id={category.id}
+          data-testid={category.id}
+        >
+          {category.name}
+        </option>
+      );
+    });
 
   return (
-    <div className={classes.mainSearch_section}>
+    <div
+      className={classes.mainSearch_section}
+      data-testid={`${props.for}-dropdown`}
+    >
       <label className={classes.mainSearch_label} htmlFor={props.for}>
         Add a {props.for}
       </label>
       <select
-        data-testid={`${props.for}-dropdown`}
         id={props.for}
         name={props.for}
         className={classes.mainSearch_dropdown}
-        onChange={(event) => props.onChangeHandler(event, props.selectArray)}
+        onChange={(event) =>
+          props.onChangeHandler(event, props.selectArray, props.for)
+        }
       >
         <option value="null">{props.for}</option>
         {categoryOptions}

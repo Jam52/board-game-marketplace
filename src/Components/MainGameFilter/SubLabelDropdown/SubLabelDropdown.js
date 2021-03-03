@@ -3,9 +3,9 @@ import classes from '../MainGameFilter.module.scss';
 import OrderToggle from '../OrderToggle/OrderToggle';
 
 const SubLabelDropdown = (props) => {
-  console.log('subLable', props.isAsc);
   let selectOptions = props.selectArr;
 
+  //if bounderies are set filter select options to be within bountries
   if (props.selectBoundaries) {
     const boundries = props.selectBoundaries;
     selectOptions = props.selectArr.filter((option) => {

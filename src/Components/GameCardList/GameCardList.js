@@ -1,6 +1,7 @@
 import React from 'react';
 import GameCard from './GameCard/GameCard';
 import classes from './GameCardList.module.scss';
+import Spinner from '../Spinner/Spinner';
 
 const GameCardList = (props) => {
   let gameList = null;
@@ -11,8 +12,14 @@ const GameCardList = (props) => {
   }
 
   return (
-    <div data-test="component-game-card-list" className={classes.container}>
-      {gameList}
+    <div data-test="component-game-card-list">
+      {props.loading ? (
+        <div className={classes.sinnerContainer}>
+          <Spinner />
+        </div>
+      ) : (
+        <div className={classes.container}>{gameList}</div>
+      )}
     </div>
   );
 };
