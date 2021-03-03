@@ -14,6 +14,7 @@ const initialState = {
   playerCount: { min: 0, max: 1000 },
   filteredCategories: [],
   filteredMechanics: [],
+  gameDataLength: 0,
 };
 
 describe('filterSlice', () => {
@@ -56,6 +57,7 @@ describe('filterSlice', () => {
       min: payload.min_players,
       max: payload.max_players,
     });
+    expect(state.gameDataLength).toEqual(mockGameData.length);
   });
   test('setIsAsc sets ascending to payload', () => {
     store.dispatch(actions.setIsAsc(true));

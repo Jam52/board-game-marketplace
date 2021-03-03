@@ -12,6 +12,7 @@ import Label from './Label/Label';
 import GameCardList from '../../Components/GameCardList/GameCardList';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SubLabelDropdown from './SubLabelDropdown/SubLabelDropdown';
+import GameCardListPagination from '../GameCardListPagination/GameCardListPagination';
 
 const MainGameFilter = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ const MainGameFilter = (props) => {
   useEffect(() => {
     dispatch(fetchCategoryMechanicOptions());
   }, [mechanicOptions, categoryOptions]);
+
+  useEffect(() => {
+    console.log(gamesData);
+  }, [gamesData]);
 
   const selectLabelHandler = (event, categories, type) => {
     const targetValue = event.target.value;
@@ -154,6 +159,7 @@ const MainGameFilter = (props) => {
         </div>
       </form>
       <GameCardList games={gamesData} loading={loading}></GameCardList>
+      <GameCardListPagination />
     </div>
   );
 };

@@ -17,6 +17,7 @@ export const gamesFilterSlice = createSlice({
     playerCount: { min: 0, max: 1000 },
     filteredCategories: [],
     filteredMechanics: [],
+    gameDataLength: 0,
   },
   reducers: {
     setSelectedLabels: (state, action) => {
@@ -37,6 +38,7 @@ export const gamesFilterSlice = createSlice({
         max_playtime,
         mechanics,
         categories,
+        length,
       } = action.payload;
 
       state.filteredCategories = categories;
@@ -44,6 +46,7 @@ export const gamesFilterSlice = createSlice({
       state.playerCount = { min: min_players, max: max_players };
       state.playtime = { min: min_playtime, max: max_playtime };
       state.gamesData = games;
+      state.gameDataLength = length;
     },
     setIsAsc: (state, action) => {
       state.isAsc = action.payload;
@@ -59,6 +62,7 @@ export const gamesFilterSlice = createSlice({
       state.gamesData = [];
       state.loading = false;
       state.isAsc = false;
+      state.gameDataLength = 0;
     },
   },
 });
