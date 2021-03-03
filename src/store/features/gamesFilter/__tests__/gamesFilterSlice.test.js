@@ -6,7 +6,6 @@ const initialState = {
   categoryOptions: [],
   mechanicOptions: [],
   selectedLabels: [],
-  selectedSubLabels: [],
   isAsc: false,
   gamesData: [],
   playtime: { min: 0, max: 1000 },
@@ -14,7 +13,8 @@ const initialState = {
   playerCount: { min: 0, max: 1000 },
   filteredCategories: [],
   filteredMechanics: [],
-  gameDataLength: 0,
+  gamesDataLength: 0,
+  currentPage: 0,
 };
 
 describe('filterSlice', () => {
@@ -57,7 +57,7 @@ describe('filterSlice', () => {
       min: payload.min_players,
       max: payload.max_players,
     });
-    expect(state.gameDataLength).toEqual(mockGameData.length);
+    expect(state.gamesDataLength).toEqual(mockGameData.length);
   });
   test('setIsAsc sets ascending to payload', () => {
     store.dispatch(actions.setIsAsc(true));

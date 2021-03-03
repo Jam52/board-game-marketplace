@@ -1,4 +1,8 @@
-export const searchQueryFromSelectedLabels = (selectedLabels, isAsc) => {
+export const searchQueryFromSelectedLabels = (
+  selectedLabels,
+  isAsc,
+  skipValue,
+) => {
   const categoryQuery = returnIdFromLabel(selectedLabels, 'category');
   const mechanicQuery = returnIdFromLabel(selectedLabels, 'mechanic');
   const yearQuery = returnIdFromLabel(selectedLabels, 'year-published');
@@ -8,7 +12,7 @@ export const searchQueryFromSelectedLabels = (selectedLabels, isAsc) => {
 
   const query = `/search/?categories=${categoryQuery}&mechanics=${mechanicQuery}&year_published=${yearQuery}&play_time=${playTimeQuery}&order_by=${
     orderByQuery || 'average_user_rating'
-  }&asc=${isAsc}&player_count=${playerCountQuery}`;
+  }&asc=${isAsc}&player_count=${playerCountQuery}&skip=${skipValue * 30}`;
   console.log(query);
   return query;
 };
