@@ -14,7 +14,7 @@ export const gamesFilterSlice = createSlice({
     gamesData: [],
     playtime: { min: 0, max: 1000 },
     loading: false,
-    playerCount: { min: 1, max: 1000 },
+    playerCount: { min: 0, max: 1000 },
     filteredCategories: [],
     filteredMechanics: [],
   },
@@ -54,8 +54,8 @@ export const gamesFilterSlice = createSlice({
     resetGameData: (state) => {
       state.filteredCategories = [];
       state.filteredMechanics = [];
-      state.playerCount = { min: 1, max: 1000 };
-      state.playtime = { min: 1, max: 10000 };
+      state.playerCount = { min: 0, max: 1000 };
+      state.playtime = { min: 0, max: 1000 };
       state.gamesData = [];
       state.loading = false;
       state.isAsc = false;
