@@ -25,7 +25,7 @@ const MainGameFilter = (props) => {
     playerCount,
     playtime,
     loading,
-    asc,
+    isAsc,
   } = useSelector((state) => state.gamesFilter);
 
   useEffect(() => {
@@ -130,8 +130,8 @@ const MainGameFilter = (props) => {
               { value: 'max_playtime', label: 'playtime' },
             ]}
             selectHandler={(event) => selectSubLabelHandler(event, 'order by')}
-            toggleAsc={() => dispatch(setAsc(!asc))}
-            isAsc={asc}
+            toggleAsc={() => dispatch(setAsc(!isAsc))}
+            isAsc={isAsc}
           />
         </div>
         <div className={classes.labelContainer}>
