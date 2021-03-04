@@ -104,7 +104,6 @@ const fetchGamesAndSetDataInState = () => {
       currentPage,
       orderBy,
     );
-    console.log(query);
     dispatch(loading(true));
     try {
       const gameData = await fetchGameData(query);
@@ -140,11 +139,7 @@ export const removeSelectedLabel = (newLabel) => {
     dispatch(setSelectedLabels(filteredLabels));
 
     if (filteredLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(
-        filteredLabels,
-        currentState.isAsc,
-      );
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     } else {
       dispatch(resetGameData());
     }
@@ -163,8 +158,7 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
     dispatch(setSelectedLabels(filteredLabels));
 
     if (filteredLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(filteredLabels);
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     } else {
       dispatch(resetGameData());
     }
@@ -175,15 +169,9 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
 export const setAsc = (asc) => {
   return async (dispatch, getState) => {
     const state = getState().gamesFilter;
-
+    dispatch(setIsAsc(asc));
     if (state.selectedLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(
-        state.selectedLabels,
-        asc,
-        state.currentPage,
-      );
-      dispatch(setIsAsc(asc));
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     }
   };
 };
@@ -193,14 +181,8 @@ export const setPageSkipValue = (skipNumber) => {
   return async (dispatch, getState) => {
     const state = getState().gamesFilter;
     if (state.currentPage !== skipNumber) {
-      const state = getState().gamesFilter;
       dispatch(setPage(skipNumber));
-      const query = searchQueryFromSelectedLabels(
-        state.selectedLabels,
-        state.isAsc,
-        skipNumber,
-      );
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     }
   };
 };
