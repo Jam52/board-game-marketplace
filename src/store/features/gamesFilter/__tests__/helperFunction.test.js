@@ -83,9 +83,9 @@ test('return param string with all player count as a param', () => {
 
 test('return param string with all order by as a param', () => {
   const stringRegex = /order_by=popularity/;
-  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
-    expect.stringMatching(stringRegex),
-  );
+  expect(
+    searchQueryFromSelectedLabels(selectedLabels, true, 1, 'popularity'),
+  ).toEqual(expect.stringMatching(stringRegex));
 });
 
 test('return param string with all play time as a param', () => {

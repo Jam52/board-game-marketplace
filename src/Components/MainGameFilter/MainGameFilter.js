@@ -6,6 +6,7 @@ import {
   removeSelectedLabel,
   setAsc,
   addSubLabelToSelectedLabels,
+  setOrderBy,
 } from '../../store/features/gamesFilter/gamesFilterSlice';
 import classes from './MainGameFilter.module.scss';
 import Label from './Label/Label';
@@ -134,7 +135,7 @@ const MainGameFilter = (props) => {
               { value: 'year_published', label: 'year published' },
               { value: 'max_playtime', label: 'playtime' },
             ]}
-            selectHandler={(event) => selectSubLabelHandler(event, 'order by')}
+            selectHandler={(event) => dispatch(setOrderBy(event.target.value))}
             toggleAsc={() => dispatch(setAsc(!isAsc))}
             isAsc={isAsc}
           />

@@ -18,6 +18,7 @@ export const gamesFilterSlice = createSlice({
     filteredMechanics: [],
     gamesDataLength: 0,
     currentPage: 0,
+    orderBy: 'average_user_rating',
   },
   reducers: {
     setSelectedLabels: (state, action) => {
@@ -64,9 +65,13 @@ export const gamesFilterSlice = createSlice({
       state.isAsc = false;
       state.gamesDataLength = 0;
       state.currentPage = 0;
+      state.orderBy = 'average_user_raiting';
     },
     setPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setOrderBy: (state, action) => {
+      state.orderBy = action.payload;
     },
   },
 });
@@ -79,13 +84,27 @@ export const {
   setIsAsc,
   resetGameData,
   setPage,
+  setOrderBy,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
 
 //fetch games and update state
-const fetchGamesAndSetDataInState = (query) => {
-  return async (dispatch) => {
+const fetchGamesAndSetDataInState = () => {
+  return async (dispatch, getState) => {
+    const {
+      selectedLabels,
+      isAsc,
+      orderBy,
+      currentPage,
+    } = getState().gamesFilter;
+    const query = searchQueryFromSelectedLabels(
+      selectedLabels,
+      isAsc,
+      currentPage,
+      orderBy,
+    );
+    console.log(query);
     dispatch(loading(true));
     try {
       const gameData = await fetchGameData(query);
@@ -105,13 +124,7 @@ export const addSelectedLabel = (newLabel) => {
     const updatedSelectedLabels = [...currentState.selectedLabels, newLabel];
 
     dispatch(setSelectedLabels(updatedSelectedLabels));
-
-    const query = searchQueryFromSelectedLabels(
-      updatedSelectedLabels,
-      currentState.isAsc,
-    );
-
-    dispatch(fetchGamesAndSetDataInState(query));
+    dispatch(fetchGamesAndSetDataInState());
   };
 };
 
