@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import classes from './App.module.scss';
-import GameCardList from './Components/GameCardList/GameCardList';
 import { BrowserRouter } from 'react-router-dom';
 import axios from './axios';
-import Spinner from './Components/Spinner/Spinner';
 import MainGameFilter from './Components/MainGameFilter/MainGameFilter';
+import GameCardList from './Components/GameCardList/GameCardList';
+import GameCardListPagination from './Components/GameCardListPagination/GameCardListPagination';
 
 class App extends Component {
   state = {
@@ -39,18 +39,15 @@ class App extends Component {
       });
     }
 
-    let gameCards = null;
-    if (this.state.loading) {
-      gameCards = <Spinner />;
-    } else if (this.state.games.length > 0) {
-      gameCards = <GameCardList games={this.state.games} />;
-    }
-
     return (
       <BrowserRouter>
         <div className={classes.App}>
-          <MainGameFilter />
-          {gameCards}
+          <div className={classes.gamesContainer}>
+            <MainGameFilter />
+            <GameCardListPagination />
+            <GameCardList></GameCardList>
+            <GameCardListPagination />
+          </div>
         </div>
       </BrowserRouter>
     );

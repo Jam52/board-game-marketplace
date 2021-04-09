@@ -70,26 +70,32 @@ const GameCardListPagination = (props) => {
     );
 
   return (
-    <div className={`container ${styles.container}`}>
-      <button
-        disabled={currentPage === 0}
-        className={`${styles.pagination}`}
-        onClick={(event) => {
-          if (currentPage > 0) {
-            updatePageSkipValueHandler(currentPage - 1, event);
-          }
-        }}
-      >
-        prev
-      </button>
-      {buttonsToDisplay}
-      <button
-        disabled={currentPage === buttons.length - 1}
-        className={`${styles.pagination}`}
-        onClick={(event) => updatePageSkipValueHandler(currentPage + 1, event)}
-      >
-        next
-      </button>
+    <div>
+      {gamesDataLength > 30 ? (
+        <div className={`container ${styles.container}`}>
+          <button
+            disabled={currentPage === 0}
+            className={`${styles.pagination}`}
+            onClick={(event) => {
+              if (currentPage > 0) {
+                updatePageSkipValueHandler(currentPage - 1, event);
+              }
+            }}
+          >
+            prev
+          </button>
+          {buttonsToDisplay}
+          <button
+            disabled={currentPage === buttons.length - 1}
+            className={`${styles.pagination}`}
+            onClick={(event) =>
+              updatePageSkipValueHandler(currentPage + 1, event)
+            }
+          >
+            next
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -160,9 +160,6 @@ const MainGameFilter = (props) => {
             : null}
         </div>
       </form>
-
-      {gamesDataLength > 30 ? <GameCardListPagination /> : null}
-      <GameCardList games={gamesData} loading={loading}></GameCardList>
     </div>
   );
 };

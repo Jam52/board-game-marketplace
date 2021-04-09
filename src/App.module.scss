@@ -18,6 +18,10 @@
   border-radius: 0.5rem;
 }
 
+.gamesContainer > * + * {
+  margin-top: 1.5rem;
+}
+
 @media (min-width: $media_tablet) {
   .App {
     width: 80vw;
