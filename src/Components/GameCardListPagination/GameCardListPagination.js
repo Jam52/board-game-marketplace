@@ -34,14 +34,19 @@ const GameCardListPagination = (props) => {
     buttonsToDisplayStart + 5,
   );
 
-  const updatePageSkipValueHandler = (value, event) => {
+  const updatePageSkipValueHandler = async (value, event) => {
     event.preventDefault();
     dispatch(setPageSkipValue(value));
 
-    const lastButtonValue = Number(
-      buttonsToDisplaySlice[buttonsToDisplaySlice.length - 1].key,
-    );
-    const firstButtonValue = Number(buttonsToDisplaySlice[0].key);
+    let lastButtonValue;
+    let firstButtonValue;
+
+    if (buttonsToDisplaySlice.length > 0) {
+      lastButtonValue = Number(
+        buttonsToDisplaySlice[buttonsToDisplaySlice.length - 1].key,
+      );
+      firstButtonValue = Number(buttonsToDisplaySlice[0].key);
+    }
 
     if (value === 0) {
       setButtonsToDisplayStart(1);

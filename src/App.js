@@ -45,7 +45,7 @@ class App extends Component {
           <div className={classes.gamesContainer}>
             <MainGameFilter />
             <GameCardListPagination />
-            <GameCardList></GameCardList>
+            <GameCardList />
             <GameCardListPagination />
           </div>
         </div>
