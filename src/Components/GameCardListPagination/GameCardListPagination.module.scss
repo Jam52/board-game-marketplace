@@ -1,0 +1,23 @@
+@import '../../CSS/base.scss';
+
+.container {
+  background-color: white;
+  border-radius: 0.5rem;
+  min-height: 2rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pagination {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.current {
+  transform: scale(1.2);
+  color: $color_orange;
+}

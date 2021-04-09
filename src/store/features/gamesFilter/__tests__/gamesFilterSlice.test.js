@@ -6,7 +6,6 @@ const initialState = {
   categoryOptions: [],
   mechanicOptions: [],
   selectedLabels: [],
-  selectedSubLabels: [],
   isAsc: false,
   gamesData: [],
   playtime: { min: 0, max: 1000 },
@@ -14,6 +13,9 @@ const initialState = {
   playerCount: { min: 0, max: 1000 },
   filteredCategories: [],
   filteredMechanics: [],
+  gamesDataLength: 0,
+  currentPage: 0,
+  orderBy: 'average_user_rating',
 };
 
 describe('filterSlice', () => {
@@ -56,6 +58,7 @@ describe('filterSlice', () => {
       min: payload.min_players,
       max: payload.max_players,
     });
+    expect(state.gamesDataLength).toEqual(mockGameData.length);
   });
   test('setIsAsc sets ascending to payload', () => {
     store.dispatch(actions.setIsAsc(true));
@@ -66,6 +69,12 @@ describe('filterSlice', () => {
     store.dispatch(actions.loading(true));
     let state = store.getState().gamesFilter;
     expect(state.loading).toBe(true);
+  });
+  test('setOrderBy sets orderBy to payload', () => {
+    const newOrderBy = 'name';
+    store.dispatch(actions.setOrderBy(newOrderBy));
+    let state = store.getState().gamesFilter;
+    expect(state.orderBy).toBe(newOrderBy);
   });
   test('resetGame data rests data in state', () => {
     store.dispatch(actions.resetGameData());

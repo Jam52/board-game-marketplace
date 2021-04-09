@@ -6,12 +6,14 @@ import {
   removeSelectedLabel,
   setAsc,
   addSubLabelToSelectedLabels,
+  setOrderBy,
 } from '../../store/features/gamesFilter/gamesFilterSlice';
 import classes from './MainGameFilter.module.scss';
 import Label from './Label/Label';
 import GameCardList from '../../Components/GameCardList/GameCardList';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SubLabelDropdown from './SubLabelDropdown/SubLabelDropdown';
+import GameCardListPagination from '../GameCardListPagination/GameCardListPagination';
 
 const MainGameFilter = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +33,10 @@ const MainGameFilter = (props) => {
   useEffect(() => {
     dispatch(fetchCategoryMechanicOptions());
   }, [mechanicOptions, categoryOptions]);
+
+  // useEffect(() => {
+  //   console.log(gamesData);
+  // }, [gamesData]);
 
   const selectLabelHandler = (event, categories, type) => {
     const targetValue = event.target.value;
@@ -129,7 +135,7 @@ const MainGameFilter = (props) => {
               { value: 'year_published', label: 'year published' },
               { value: 'max_playtime', label: 'playtime' },
             ]}
-            selectHandler={(event) => selectSubLabelHandler(event, 'order by')}
+            selectHandler={(event) => dispatch(setOrderBy(event.target.value))}
             toggleAsc={() => dispatch(setAsc(!isAsc))}
             isAsc={isAsc}
           />
@@ -154,6 +160,7 @@ const MainGameFilter = (props) => {
         </div>
       </form>
       <GameCardList games={gamesData} loading={loading}></GameCardList>
+      {gamesData.length > 0 ? <GameCardListPagination /> : null}
     </div>
   );
 };

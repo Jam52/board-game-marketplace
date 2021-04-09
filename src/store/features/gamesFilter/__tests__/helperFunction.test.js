@@ -83,14 +83,21 @@ test('return param string with all player count as a param', () => {
 
 test('return param string with all order by as a param', () => {
   const stringRegex = /order_by=popularity/;
-  expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
-    expect.stringMatching(stringRegex),
-  );
+  expect(
+    searchQueryFromSelectedLabels(selectedLabels, true, 1, 'popularity'),
+  ).toEqual(expect.stringMatching(stringRegex));
 });
 
 test('return param string with all play time as a param', () => {
   const stringRegex = /play_time=15/;
   expect(searchQueryFromSelectedLabels(selectedLabels)).toEqual(
+    expect.stringMatching(stringRegex),
+  );
+});
+
+test('return param string with skip value as a param', () => {
+  const stringRegex = /skip=30/;
+  expect(searchQueryFromSelectedLabels(selectedLabels, true, 1)).toEqual(
     expect.stringMatching(stringRegex),
   );
 });

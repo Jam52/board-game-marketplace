@@ -9,7 +9,6 @@ export const gamesFilterSlice = createSlice({
     categoryOptions: [],
     mechanicOptions: [],
     selectedLabels: [],
-    selectedSubLabels: [],
     isAsc: false,
     gamesData: [],
     playtime: { min: 0, max: 1000 },
@@ -17,6 +16,9 @@ export const gamesFilterSlice = createSlice({
     playerCount: { min: 0, max: 1000 },
     filteredCategories: [],
     filteredMechanics: [],
+    gamesDataLength: 0,
+    currentPage: 0,
+    orderBy: 'average_user_rating',
   },
   reducers: {
     setSelectedLabels: (state, action) => {
@@ -37,6 +39,7 @@ export const gamesFilterSlice = createSlice({
         max_playtime,
         mechanics,
         categories,
+        length,
       } = action.payload;
 
       state.filteredCategories = categories;
@@ -44,6 +47,7 @@ export const gamesFilterSlice = createSlice({
       state.playerCount = { min: min_players, max: max_players };
       state.playtime = { min: min_playtime, max: max_playtime };
       state.gamesData = games;
+      state.gamesDataLength = length;
     },
     setIsAsc: (state, action) => {
       state.isAsc = action.payload;
@@ -59,6 +63,15 @@ export const gamesFilterSlice = createSlice({
       state.gamesData = [];
       state.loading = false;
       state.isAsc = false;
+      state.gamesDataLength = 0;
+      state.currentPage = 0;
+      state.orderBy = 'average_user_raiting';
+    },
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setOrderBy: (state, action) => {
+      state.orderBy = action.payload;
     },
   },
 });
@@ -70,13 +83,27 @@ export const {
   loading,
   setIsAsc,
   resetGameData,
+  setPage,
+  setOrderBy,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
 
 //fetch games and update state
-const fetchGamesAndSetDataInState = (query) => {
-  return async (dispatch) => {
+const fetchGamesAndSetDataInState = () => {
+  return async (dispatch, getState) => {
+    const {
+      selectedLabels,
+      isAsc,
+      orderBy,
+      currentPage,
+    } = getState().gamesFilter;
+    const query = searchQueryFromSelectedLabels(
+      selectedLabels,
+      isAsc,
+      currentPage,
+      orderBy,
+    );
     dispatch(loading(true));
     try {
       const gameData = await fetchGameData(query);
@@ -96,13 +123,7 @@ export const addSelectedLabel = (newLabel) => {
     const updatedSelectedLabels = [...currentState.selectedLabels, newLabel];
 
     dispatch(setSelectedLabels(updatedSelectedLabels));
-
-    const query = searchQueryFromSelectedLabels(
-      updatedSelectedLabels,
-      currentState.isAsc,
-    );
-
-    dispatch(fetchGamesAndSetDataInState(query));
+    dispatch(fetchGamesAndSetDataInState());
   };
 };
 
@@ -112,17 +133,13 @@ export const removeSelectedLabel = (newLabel) => {
     const currentState = getState().gamesFilter;
 
     const filteredLabels = currentState.selectedLabels.filter(
-      (label) => label.id != newLabel.id,
+      (label) => label.id !== newLabel.id,
     );
 
     dispatch(setSelectedLabels(filteredLabels));
 
     if (filteredLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(
-        filteredLabels,
-        currentState.isAsc,
-      );
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     } else {
       dispatch(resetGameData());
     }
@@ -141,8 +158,7 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
     dispatch(setSelectedLabels(filteredLabels));
 
     if (filteredLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(filteredLabels);
-      dispatch(fetchGamesAndSetDataInState(query));
+      dispatch(fetchGamesAndSetDataInState());
     } else {
       dispatch(resetGameData());
     }
@@ -152,12 +168,21 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
 //update Asc in state, fetch and set new game data
 export const setAsc = (asc) => {
   return async (dispatch, getState) => {
-    const currentLabels = getState().gamesFilter.selectedLabels;
+    const state = getState().gamesFilter;
+    dispatch(setIsAsc(asc));
+    if (state.selectedLabels.length > 0) {
+      dispatch(fetchGamesAndSetDataInState());
+    }
+  };
+};
 
-    if (currentLabels.length > 0) {
-      const query = searchQueryFromSelectedLabels(currentLabels, asc);
-      dispatch(setIsAsc(asc));
-      dispatch(fetchGamesAndSetDataInState(query));
+//update skippage value in state, fetch and set new game data
+export const setPageSkipValue = (skipNumber) => {
+  return async (dispatch, getState) => {
+    const state = getState().gamesFilter;
+    if (state.currentPage !== skipNumber) {
+      dispatch(setPage(skipNumber));
+      dispatch(fetchGamesAndSetDataInState());
     }
   };
 };
