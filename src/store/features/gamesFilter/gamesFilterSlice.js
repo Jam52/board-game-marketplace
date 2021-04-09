@@ -65,12 +65,12 @@ export const gamesFilterSlice = createSlice({
       state.isAsc = false;
       state.gamesDataLength = 0;
       state.currentPage = 0;
-      state.orderBy = 'average_user_raiting';
+      state.orderBy = 'average_user_rating';
     },
     setPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    setOrderBy: (state, action) => {
+    orderBy: (state, action) => {
       state.orderBy = action.payload;
     },
   },
@@ -84,7 +84,7 @@ export const {
   setIsAsc,
   resetGameData,
   setPage,
-  setOrderBy,
+  orderBy,
 } = gamesFilterSlice.actions;
 
 export default gamesFilterSlice.reducer;
@@ -121,7 +121,7 @@ export const addSelectedLabel = (newLabel) => {
   return async (dispatch, getState) => {
     const currentState = getState().gamesFilter;
     const updatedSelectedLabels = [...currentState.selectedLabels, newLabel];
-
+    dispatch(setPage(0));
     dispatch(setSelectedLabels(updatedSelectedLabels));
     dispatch(fetchGamesAndSetDataInState());
   };
@@ -137,7 +137,7 @@ export const removeSelectedLabel = (newLabel) => {
     );
 
     dispatch(setSelectedLabels(filteredLabels));
-
+    dispatch(setPage(0));
     if (filteredLabels.length > 0) {
       dispatch(fetchGamesAndSetDataInState());
     } else {
@@ -156,7 +156,7 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
       filteredLabels.push(newLabel);
     }
     dispatch(setSelectedLabels(filteredLabels));
-
+    dispatch(setPage(0));
     if (filteredLabels.length > 0) {
       dispatch(fetchGamesAndSetDataInState());
     } else {
@@ -168,20 +168,31 @@ export const addSubLabelToSelectedLabels = (newLabel) => {
 //update Asc in state, fetch and set new game data
 export const setAsc = (asc) => {
   return async (dispatch, getState) => {
-    const state = getState().gamesFilter;
     dispatch(setIsAsc(asc));
+    const state = getState().gamesFilter;
     if (state.selectedLabels.length > 0) {
       dispatch(fetchGamesAndSetDataInState());
     }
   };
 };
 
-//update skippage value in state, fetch and set new game data
+//update skip page value in state, fetch and set new game data
 export const setPageSkipValue = (skipNumber) => {
   return async (dispatch, getState) => {
     const state = getState().gamesFilter;
     if (state.currentPage !== skipNumber) {
       dispatch(setPage(skipNumber));
+      dispatch(fetchGamesAndSetDataInState());
+    }
+  };
+};
+
+//update order by value in state and fetch and set new game data
+export const setOrderBy = (orderByValue) => {
+  return async (dispatch, getState) => {
+    dispatch(orderBy(orderByValue));
+    const state = getState().gamesFilter;
+    if (state.selectedLabels.length > 0) {
       dispatch(fetchGamesAndSetDataInState());
     }
   };

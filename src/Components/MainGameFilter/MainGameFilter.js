@@ -28,6 +28,7 @@ const MainGameFilter = (props) => {
     playtime,
     loading,
     isAsc,
+    gamesDataLength,
   } = useSelector((state) => state.gamesFilter);
 
   useEffect(() => {
@@ -159,8 +160,9 @@ const MainGameFilter = (props) => {
             : null}
         </div>
       </form>
+
+      {gamesDataLength > 30 ? <GameCardListPagination /> : null}
       <GameCardList games={gamesData} loading={loading}></GameCardList>
-      {gamesData.length > 0 ? <GameCardListPagination /> : null}
     </div>
   );
 };
