@@ -107,7 +107,9 @@ const fetchGamesAndSetDataInState = () => {
     dispatch(loading(true));
     try {
       const gameData = await fetchGameData(query);
-      dispatch(setGamesData(gameData.data));
+      if (gameData.data.games.length > 0) {
+        dispatch(setGamesData(gameData.data));
+      }
       dispatch(loading(false));
     } catch (e) {
       dispatch(loading(false));
@@ -135,12 +137,16 @@ export const removeSelectedLabel = (newLabel) => {
     const filteredLabels = currentState.selectedLabels.filter(
       (label) => label.id !== newLabel.id,
     );
-
+    const selectedLabels = filteredLabels.filter(
+      (label) => label.type === 'category' || label.type === 'mechanic',
+    );
     dispatch(setSelectedLabels(filteredLabels));
     dispatch(setPage(0));
     if (filteredLabels.length > 0) {
       dispatch(fetchGamesAndSetDataInState());
-    } else {
+    }
+    if (selectedLabels.length === 0) {
+      console.log('resetting');
       dispatch(resetGameData());
     }
   };

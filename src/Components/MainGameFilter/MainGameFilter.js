@@ -35,9 +35,9 @@ const MainGameFilter = (props) => {
     dispatch(fetchCategoryMechanicOptions());
   }, [mechanicOptions, categoryOptions]);
 
-  // useEffect(() => {
-  //   console.log(gamesData);
-  // }, [gamesData]);
+  useEffect(() => {
+    console.log(gamesData);
+  }, [gamesData]);
 
   const selectLabelHandler = (event, categories, type) => {
     const targetValue = event.target.value;
